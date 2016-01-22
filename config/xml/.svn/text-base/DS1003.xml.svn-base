@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+	<head>
+		<code>DS1003</code>
+		<version>2.0.0.0</version>
+	</head>
+	<body>
+		<content>
+			<device id="440622010000000001" direction="1">
+				<status>H_CAMERA=0;LOOP=0;FLASHLIGHT=0;VEH_CHECKER=0
+				</status>
+				<desc>FLASHLIGHT=断电;LOOP=断开</desc>
+			</device>
+			<device id="440622010000000002" direction="3">
+				<status>H_CAMERA=0;LOOP=0;FLASHLIGHT=0;VEH_CHECKER=0
+				</status>
+				<desc>FLASHLIGHT=断电;LOOP=断开</desc>
+			</device>
+		</content>
+	</body>
+</message>

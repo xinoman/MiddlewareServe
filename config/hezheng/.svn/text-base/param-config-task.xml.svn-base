@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		
+		<!--将审核通过后的违法数据上传公安交通管理综合应用平台-->
+  		<task run="true" imp_class="com.its.core.local.hezheng.task.ExportToZlkjPdaserviceTask">  			
+  			
+			<!--每次运行间隔时间：秒-->  			
+			<period>30</period>		
+			
+			<!--图片合并以后在本地保存路径，如为空表示本地不保存-->  			
+			<image_save_path>D:/</image_save_path>	
+  			
+  			<!-- 公安交通管理综合应用平台系统webservice  			    
+  			    epo_endpoint:webservice访问地址
+  			    fxjg:发现机关
+  			 -->
+  			<webservice
+  				epo_endpoint =	"http://10.178.99.36:9080/dzjcWeb/services/autoServices"
+  				fxjg         =  "622925000000"
+  			/>
+  			
+  			<sql  				
+				select_unexport_record			= "select * from T_ITS_VIOLATE_RECORD where finish_flag='F' and (whitelist is null or whitelist ='N') order by violate_time desc"
+				update_violate_record_expire_status	= "update T_ITS_VIOLATE_RECORD set finish_flag='E' where finish_flag='N' and trunc(sysdate - violate_time)>15"
+				update_violate_record_status		= "update T_ITS_VIOLATE_RECORD set finish_flag='Y' where id=?"				
+  			/>			
+  		</task>		
+
+  		<!-- 删除过期目录，目录的命名结构必须为yyyyMMdd -->
+  		<task run="true" imp_class="com.its.core.module.task.impl.DeleteOverdueDirectoryTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>7200</period>
+  			
+  			<!-- 目录地址 -->
+  			<dir>E:/veh/</dir>
+  			
+  			<!-- 过期天数 -->
+  			<overdue_day>30</overdue_day>
+  			
+  		</task> 
+
+		<task run="true" imp_class="com.its.core.module.task.impl.IpMacAddressTask">
+  		  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>600</period>  	
+  					
+  		</task>
+  		
+  		<!-- 间隔一段时间定时执行给定的SQL语句 -->
+  		<task run="true" imp_class="com.its.core.module.task.impl.ExecuteSqlTimerTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3600</period>
+			
+			<sql_list>
+				<sql value="delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C'"/>
+				<sql value="delete T_ITS_VIOLATE_RECORD where finish_flag='D'"/>
+				<sql value="delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30"/>
+				<sql value="delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30"/>
+				<sql value="delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7"/>				
+				<sql value="update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time &lt; sysdate"/>
+			</sql_list>
+			  			
+  		</task>  			
+  		
+  	</timers>
+  </its>
+</param-config>

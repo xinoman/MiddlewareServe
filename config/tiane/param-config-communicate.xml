@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>	
+  	<!--设备通信处理服务器-->
+  	<device_communicate_server> 		
+  	
+  		<!--获取并处理设备传送过来的信息-->
+  		<protocol> 		    
+	  		
+	  		<!--获取应用系统（客户端）传送过来的布控和撤控信息-->
+	  		<head word="AS1001" valid="true" processor="com.its.core.module.device.as.ControlProcessor"/>
+  			<head word="AS1002" valid="false" processor="com.its.core.module.device.as.ControlCancelProcessor"/>
+  			<head word="AS1003" valid="true" processor="com.its.core.module.device.as.BlacklistReloadProcessor"/>
+  		</protocol>
+
+  	</device_communicate_server>
+  </its>
+</param-config>

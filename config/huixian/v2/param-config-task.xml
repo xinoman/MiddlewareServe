@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		
+  		<!-- 治安卡口+电子警察图片重命名定时器任务 -->
+  		<task run="true" imp_class="com.its.core.local.gansu.task.ImageRenameTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 源目录-->
+  			<from_dir>D:/ftproot/</from_dir>
+  			
+  			<!-- 目的目录-->
+  			<to_dir>D:/ftphome/</to_dir>
+  			
+  		</task>
+  		
+  	</timers>
+  </its>
+</param-config>

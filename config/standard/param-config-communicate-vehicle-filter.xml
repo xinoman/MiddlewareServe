@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>	  	
+  	<realtime_vehicle>	
+  	    				
+	  	<filters>
+	  	    
+	  	    <!-- 治安卡口设备抓拍的公路车辆通行信息入库标准版实现 -->
+	  	    <filter valid="true" class="com.its.core.module.device.vehicle.filter.InitRealtimeVehicleInfoV2Filter">
+		  		<sql_insert>insert into t_its_vehicle_record(id,plate,plate_color_code,catch_time,road_id,device_id,direction_code,direction_drive,driveway_no,speed,limit_speed,alarm_type_id,blacklist_type_id,panorama_image_path,feature_image_path,create_time)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</sql_insert>	
+				<sql_insert_alarm>insert into t_its_vehicle_record_alarm(id,plate,plate_color_code,catch_time,road_id,device_id,direction_code,direction_drive,driveway_no,speed,limit_speed,alarm_type_id,blacklist_type_id,panorama_image_path,feature_image_path,create_time)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</sql_insert_alarm>							  					
+  			</filter>
+  			
+  			<!-- 按天、24小时（单位）统计交通流量到：T_ITS_TRAFFIC_DAY_STAT 和 T_ITS_TRAFFIC_HOUR_STAT 表-->
+	  		<filter valid="true" class="com.its.core.module.device.vehicle.TrafficFluxStatFilter">
+				<day_stat_sql
+					check_exist = "select id from t_its_traffic_day_stat where road_id = ? and device_id = ? and direction_code=? and lane_no=? and catch_day=?"
+					insert = "insert into t_its_traffic_day_stat (id,road_id,device_id,direction_code,lane_no,catch_day,image_sum) values (?,?,?,?,?,?,?)"
+					update = "update t_its_traffic_day_stat set image_sum = image_sum+1 where ID=?"
+				/>		  
+				
+				<hour_stat_sql
+					check_exist = "select id from t_its_traffic_hour_stat where road_id=? and device_id=? and direction_code=? and lane_no=? and catch_time=?"
+					insert = "insert into t_its_traffic_hour_stat (id,road_id,device_id,direction_code,lane_no,catch_time,flux) values (?,?,?,?,?,?,?)"
+					update = "update t_its_traffic_hour_stat set flux=flux+1 where ID=?"
+				/>			
+				
+	  		</filter>
+	  		
+	  		<!-- 区间测速配置-标准版 -->
+	  		<filter valid="true" class="com.its.core.module.device.vehicle.AreaOverspeedMonitorFilter">
+  				<!-- 
+  					image_save_dir_area_overspeed	：在后台合并的区间超速车辆图片保存位置
+  					sleep_millisecond				：合并图片前休眠时间，单位：毫秒 （该参数为等待前端生成图片的休眠时间，可以设为0，表示不等待）
+  					overspeed_limit_value			: 超速限值(单位:KM/H),当检测到的限速值超出该值时,系统则认为不合理,从而放弃该图片生成,可以设为小于等于0,表示不设限.  					
+  					plate_full_match				: 车牌是否完全匹配，如为true,则车牌后五位必须全部匹配才做检测
+  					plate_match_bit					: 车牌匹配位数，表示车牌后五位只要匹配多少位即算成功检测，只有plate_full_match设为false时，该参数才有意义，该参数必须小于等于5
+  					ignore_single_point_overspeed	: 是否忽略单点超速车辆，如为false，则表示即使单点超速了，仍然检测其是否区间超速。（单点超速车辆是那些经过单个卡口时即检测出超速的车辆，如果已经将单点超速车辆导入违法处理库，则此处必须设为true，不再重复处罚！）  					
+  				-->	  		
+  				<parameters
+  					image_save_dir_area_overspeed	= "D:/区间测速图片保存目录/"
+					sleep_millisecond				= "0"
+					overspeed_limit_value			= "150"	
+					plate_full_match				= "true"
+					plate_match_bit					= "4"
+					ignore_single_point_overspeed	= "false"			
+  				/>
+  				
+  				<!-- 
+  					水印文字配置
+  					font_size		: 字体尺寸
+  					font_height		: 字体高度
+  					font_color		: 字体颜色
+  					bg_color		: 字体背景颜色
+  					left_margin		: 左边留白(用于调整字体位置)
+  					top_margin		: 上边留白(用于调整字体位置)
+  				 -->
+  				<watermark
+  					bg_height   = "40"
+  					font_size	= "26"
+  					font_height	= "26"
+  					font_color	= "white"
+  					bg_color	= "black"
+  					left_margin	= "5"
+  					top_margin	= "5"
+  				/>			
+	  		
+				<sections>
+					<!-- 定义区间测速路段  device_id：将一个区间测速段作为一个设备编号(虚拟的设备ID)	-->
+					<section direction="1" name="京港澳高速韶关南行段" device_id="440622010010">	  						
+						<!-- 
+							按区间测速设备顺序定义检测点
+							device_ids			设备编号,多个设备在同一检测点，检测同一方向时，中间用逗号分隔
+							distance			当前检测点到下一检测点之间的距离，单位：米
+							limit_speed			从当前检测点到下一检测点之间的上限速，单位：KM/H,一般该值是统一的	  								
+							limit_speed_map		根据车牌颜色确定最高限速，其值格式为：车牌颜色1=最高限速值1,车牌颜色2=最高限速值2,.....
+												如果未定义limit_speed_map或者相应的车牌颜色没有在该定义中给出，则以limit_speed的值为缺省最高限速
+							lower_limit_speed	从当前检测点到下一检测点之间的下限速，单位：KM/H,一般该值是统一的，如果未定义或为空，表示不检测下限速
+							lower_limit_speed_map	根据车牌颜色确定最低限速，其值格式为：车牌颜色1=最低限速值1,车牌颜色2=最低限速值2,.....
+													如果未定义lower_limit_speed_map或者相应的车牌颜色没有在该定义中给出，则以lower_limit_speed的值为缺省最低限速			
+					        catch_point_map 	根据车牌颜色设置的最高限速启拍点
+						-->	  			
+						<check_points>
+							<check_point device_ids="440622010002,440622010001" distance="7680" lower_limit_speed ="60" limit_speed_map="0=90,1=90,2=90,3=90,4=90"/>
+							<check_point device_ids="440622010004,440622010003" distance="0" 	 lower_limit_speed ="60" limit_speed_map="0=90,1=90,2=90,3=90,4=90"/>
+						</check_points>						
+					</section>		
+	  			</sections>
+	  		</filter>
+	  			  				
+	  	</filters>	  	
+	  		
+  	</realtime_vehicle>
+  </its>
+</param-config>

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		
+  		<!--将有效的违法车辆数据导出到T_ITS_FXC_WFDATA表，支队处罚系统自动从该表同步数据-->
+  		<task run="true" imp_class="com.its.core.local.ningxiang.task.ExportViolateTask">  			
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>	
+  			
+  			<!-- 单位信息
+  			    lrdwdm:录入单位代码 
+  			    lrmjdm:录入民警代码
+  			    zqdwdm:执勤单位代码
+  			    zqmjdm:执勤民警代码
+  			          
+  			 -->
+  			<unitInfo
+  				lrdwdm = "430124000000"
+			    lrmjdm = "011854"
+			    zqdwdm = "430124000000"
+			    zqmjdm = "011854"		
+  			/>	
+		  	
+			<sql
+			    select_violate_record_sql = "select a.id,a.plate,a.plate_type_id,a.violate_time,a.wfxw_code,b.code road_code, b.name road_name,a.speed,a.limit_speed,a.image_path_1,a.image_path_2,a.image_path_3 from T_ITS_VIOLATE_RECORD a left join T_ITS_ROAD b on a.road_id = b.id where finish_flag = 'F' and (whitelist is null or whitelist='N') order by violate_time desc"  
+  		        update_violate_record_sql = "update T_ITS_VIOLATE_RECORD set finish_flag = 'Y' where id = ?"		
+  		        insert_fxc_wfdata_record_sql = "insert into t_its_fxc_wfdata(id, hphm, hpzl, wfdm, wfdddm, wfddmc, wfsj, mbsd, xzsd, wftp1, wftp2, wftp3, lrdwdm, lrmjdm, zqdwdm, zqmjdm, cllx, sjzl)values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"  		                
+  		    />				
+  			  			
+  		</task>  					
+  		
+  	</timers>
+  </its>
+</param-config>

@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		<!-- 治安卡口图片重命名定时器任务 -->
+  		<task run="true" imp_class="com.its.core.local.hezheng.task.VehicleImageRenameTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 源目录-->
+  			<from_dir>D:/ftproot/</from_dir>
+  			
+  			<!-- 目的目录-->
+  			<to_dir>D:/ftphome/</to_dir>
+  			
+  		</task>
+  		
+  		<!-- 定时上传指定目录的文件到FTP服务器上 -->
+  		<task run="false" imp_class="com.its.core.module.task.impl.UploadToFtpServerTask">
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 
+  				FTP Server配置信息
+  				host		: FTP Server主机
+  				port		: 端口
+  				account		: 帐号
+  				password	: 密码
+  			 -->
+  			<ftp_server
+  				host		= "192.168.1.104"
+  				port		= "25"
+  				account		= "veh"
+  				password	= "123456"
+  			/>
+  			
+  			<!-- 文件名或目录如果含有中文,请使用该参数 -->
+  			<file_name_encoding>GBK</file_name_encoding>
+  			
+			<dirs>
+				<!-- 
+					本地目录配置
+					path								: 目录路径
+					include_subdirectory				: 上传时是否包含子目录下的文件
+					create_subdirectory_at_ftpserver	: 上传时是否在FTP Server上创建同名子目录,include_subdirectory必须设为true这个参数才有效,如果这个参数设为false,则全部上传到根目录下.(注意:如为true,则要求帐号具有创建目录的权限)
+					delete_local_subdirectory			: 上传成功后,是否删除本地空目录
+					file_type							: 文件类型,分为binary或ascii
+				 -->
+				<dir
+					path 								= "D:/export/"
+					include_subdirectory				= "true"
+					create_subdirectory_at_ftpserver	= "true"
+					delete_local_empty_subdirectory		= "true"
+					file_type							= "binary"
+				/>								
+			</dirs>
+  		</task>
+  		
+  		<!-- 全国机动车缉查布控系统接口规范(无锡所)标准版 -->
+  		<task run="false" imp_class="com.its.core.local.hezhou.task.ExportVehicleToWxsTaskNew">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>5</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.151.195.2:9080/rminf/services/Trans"					
+			/>				
+			  			
+  		</task>
+  		
+  		<!-- 英赛腾图片数据导出定时器任务 -->
+  		<task run="false" imp_class="com.its.core.local.hezhou.task.ExportImageFilesReadTask">  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 图片访问前缀-->
+  			<http_prefix>http://192.168.5.66</http_prefix>
+  			
+  			<!-- 图片保存目录-->
+  			<img_save_dir>D:/ftphome</img_save_dir>
+			
+			<connection>
+		  		<driver_class>com.microsoft.jdbc.sqlserver.SQLServerDriver</driver_class>
+		  		<url>jdbc:microsoft:sqlserver://192.168.5.66:1433;DatabaseName=monitorsystem</url>
+		  		<username>sa</username>
+		  		<password>sa</password>	
+		  	</connection>
+		  	
+			<sql>
+			    <select_image_file_record>select top 100 ID,DeviceIP,LicenseNumber,LicenseColor,CatchDate,Direction,RoadId,Speed,ImagePath from dbo.monitor order by CatchDate desc</select_image_file_record>
+			    <update_image_file_record>update dbo.monitor set Status = 'Y' where ID = ?</update_image_file_record>
+			</sql>
+  		</task>
+  		
+  		<!-- 英赛腾图片数据导出定时器任务 -->
+  		<task run="false" imp_class="com.its.core.local.hezhou.task.ExportImageFilesReadTask">  			
+  			
+			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 图片访问前缀-->
+  			<http_prefix>http://192.168.5.67</http_prefix>
+  			
+  			<!-- 图片保存目录-->
+  			<img_save_dir>D:/ftphome</img_save_dir>
+			
+			<connection>
+		  		<driver_class>com.microsoft.jdbc.sqlserver.SQLServerDriver</driver_class>
+		  		<url>jdbc:microsoft:sqlserver://192.168.5.67:1433;DatabaseName=monitorsystem</url>
+		  		<username>sa</username>
+		  		<password>sa</password>	
+		  	</connection>
+		  	
+			<sql>
+			    <select_image_file_record>select top 100 ID,DeviceIP,LicenseNumber,LicenseColor,CatchDate,Direction,RoadId,Speed,ImagePath from dbo.monitor where DeviceIP='192.168.5.245' order by CatchDate desc</select_image_file_record>
+			    <update_image_file_record>update dbo.monitor set Status = 'Y' where ID = ?</update_image_file_record>
+			</sql>
+  		</task>
+  		
+  		<!-- 图片数据导出定时器任务 -->
+  		<task run="false" imp_class="com.its.core.local.hezhou.task.ExportImageFilesReadOldTask">  			
+  			
+			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 图片访问前缀-->
+  			<http_prefix>http://192.168.5.1</http_prefix>
+  			
+  			<!-- 图片保存目录-->
+  			<img_save_dir>D:/ftphome</img_save_dir>
+			
+			<connection>
+		  		<driver_class>com.microsoft.jdbc.sqlserver.SQLServerDriver</driver_class>
+		  		<url>jdbc:microsoft:sqlserver://192.168.5.1:1433;DatabaseName=CenterUsedByMonitor</url>
+		  		<username>sa</username>
+		  		<password>sa</password>	
+		  	</connection>
+		  	
+			<sql>
+			    <select_image_file_record>select top 100 ID,DeviceIP,LicenseNumber,LicenseColor,CatchDate,Direction,RoadId,Speed,ImagePath from Tx_car where DeviceIP='192.168.5.245' order by CatchDate desc</select_image_file_record>
+			    <update_image_file_record>update Tx_car set Status = 'Y' where ID = ?</update_image_file_record>
+			</sql>
+  		</task>
+  		
+  		<!-- [图片合成]定时器任务-->
+  		<task run="false" imp_class="com.its.core.local.dfa.task.ImageComposeTask">  			
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 源目录-->
+  			<from_dir>D:/ftproot/</from_dir>
+  			
+  			<!-- 目的目录-->
+  			<to_dir>D:/ftphome/</to_dir>
+  			
+  		</task>
+  		
+  		<!-- 图片文件名调整-->
+  		<task run="false" imp_class="com.its.core.local.longchuan.task.ImageRenameTask">  			
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 源目录-->
+  			<from_dir>D:/ftproot/</from_dir>
+  			
+  			<!-- 目的目录-->
+  			<to_dir>D:/ftphome/</to_dir>
+  			
+  		</task>
+  		
+  		<!-- 图片文件名调整-->
+  		<task run="true" imp_class="com.its.core.local.yancheng.task.ImageRenameTask">  			
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3</period>
+  			
+  			<!-- 源目录-->
+  			<from_dir>D:/ftproot/</from_dir>
+  			
+  			<!-- 目的目录-->
+  			<to_dir>D:/ftphome/</to_dir>
+  			
+  		</task>
+  		
+  		<!-- 《卡车之家》卡车图库 系列车型原始图片下载定时器任务-->
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>120</period>
+  			
+  			<!-- 图片保存目录 -->  
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			
+  			<!-- 汽车信息  			    
+  			    url:网址
+  			    brand:汽车品牌   			   			   
+  			    type:种类
+  			    model:型号
+  			    name:名称
+  			    node:节点
+  			    sn:图片序列号开始、结束
+  			 -->
+  			<car
+  				url    = "http://img.360che.com/imgc/mark/0/"
+  				brand  = "一汽解放"							
+  				type   = "牵引车"
+  				model  = "奥威(J5P)" 				
+  			/>  	
+  			<product_list>
+				<product name="解放 奥威(J5P)重卡 310马力 4X2 牵引车(CA4182P21K2A3E)" node="115" sn="115691,115730"></product>
+				<product name="解放 新奥威(J5P)重卡 330马力 6X2 牵引车(CA4222P21K2T3A3E)" node="90" sn="90867,90883"></product>
+				<product name="解放 奥威(J5P)重卡 350马力 6X2 牵引车(CA4252P21K2T3E)" node="37" sn="37743,37757"></product>								
+			</product_list>  						
+  		</task>  	
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>30</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="一汽解放" type="牵引车" model="悍威(J5M)" />  	
+  			<product_list>
+				<product name="解放 悍威(J5M)重卡 380马力 6X6 牵引车(CA4253P2K14T)" node="88" sn="88854,88880"></product>															
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="一汽解放" type="牵引车" model="J4R" />  	
+  			<product_list>
+				<product name="解放 J4R中卡 137马力 4X2 牵引车(CA4127)" node="40" sn="40156,40156"></product>															
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="一汽解放" type="牵引车" model="J6" />  	
+  			<product_list>
+				<product name="解放 2013款 J6P重卡 420马力 6X4 牵引车" node="116" sn="116671,116680"></product>		
+				<product name="解放 J6M重卡 330马力 6X2 牵引车(CA4250P63K2T3E)" node="110" sn="110225,110267"></product>
+				<product name="解放 J6重卡 390马力 6X4 牵引车(CA4250P66K24T1EX)" node="110" sn="110393,110420"></product>
+				<product name="解放 J6P重卡 420马力 6X4 牵引车(高端)(CA4250P66K24T1R4)" node="94" sn="94906,94923"></product>	
+				<product name="解放 J6H重卡 420马力 6X4 牵引车(CA4250P66K24T1A3HE)" node="66" sn="66711,66716"></product>												
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="一汽解放" type="牵引车" model="L5" />  	
+  			<product_list>
+				<product name="解放 L5R重卡 310马力 6X2 牵引车(CA4232K2E3R5T3A90)" node="110" sn="110777,110792"></product>															
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="青岛解放" type="牵引车" model="新大威" />  	
+  			<product_list>
+				<product name="解放 新大威重卡 380马力 6X4 牵引车(LNG)(CA4258P2K15T1NA80)" node="110" sn="110812,110865"></product>		
+				<product name="解放 新大威重卡 336马力 6X4 牵引车(CA4257P2K2T1EA80)" node="52" sn="52000,52019"></product>
+				<product name="解放 新大威重卡 300马力 6X4 牵引车(CA4257P2K2T1EA80)" node="89" sn="89477,89495"></product>												
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="青岛解放" type="牵引车" model="悍威(J5M)" />  	
+  			<product_list>
+				<product name="解放 悍威(J5M)重卡 280马力 6X2 牵引车(CA4206P1K2T3EA80)" node="70" sn="70254,70259"></product>											
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="青岛解放" type="牵引车" model="新悍威(J5M)" />  	
+  			<product_list>
+				<product name="解放 新悍威(J5M)重卡 280马力 6X2 牵引车(CA4227P1K2T3AEA82)" node="88" sn="88470,88490"></product>	
+				<product name="解放 新悍威(J5M)重卡 330马力 6X2 牵引车(轻量化)(CA4227P1K2T3AEA82)" node="110" sn="110534,110539"></product>										
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="青岛解放" type="牵引车" model="途V" />  	
+  			<product_list>
+				<product name="解放 途V重卡 330马力 6X4 牵引车(CA4258P2K2T1EA80)" node="111" sn="111670,111673"></product>	
+				<product name="解放 途V重卡 310马力 6X2 牵引车(CA4226P2K2T3EA82)" node="111" sn="111649,111654"></product>										
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="青岛解放" type="载货车" model="骏威(J5K)" />  	
+  			<product_list>
+				<product name="解放 骏威(J5K)中卡 180马力 6X2 仓栅载货车(CA5240XXYPK2L7T3EA80-1)" node="112" sn="112092,112097"></product>	
+				<product name="解放 骏威(J5K)中卡 160马力 4X2 厢式载货车(CA5120XXYPK2L5EA80-3)" node="93" sn="93908,93918"></product>										
+			</product_list>  						
+  		</task>
+  		
+  		<task run="false" imp_class="com.its.core.local.cheimage.task.CheImageDownloadTask">
+  			
+  			<period>120</period>
+  			<image_save_dir>D://卡车之家</image_save_dir>
+  			  			
+  			<car url="http://img.360che.com/imgc/mark/0/" brand="青岛解放" type="载货车" model="陆威" />  	
+  			<product_list>
+				<product name="解放 陆威重卡 4X2 180马力 载货车(CA5167XXYP1K2L4EA80)" node="112" sn="112200,112203"></product>	
+				<product name="解放 陆威重卡 4X2 160马力 载货车(CA5167XXYP1K2L2EA80-1)" node="93" sn="112192,112194"></product>										
+			</product_list>  						
+  		</task>
+  		
+  	</timers>
+  </its>
+</param-config>

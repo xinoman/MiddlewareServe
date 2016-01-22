@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>	  	
+  	<realtime_vehicle>	
+  	    				
+	  	<filters>
+	  	    
+	  	    <!-- 治安卡口设备抓拍的公路车辆通行信息入库标准版实现 -->
+	  	    <filter valid="true" class="com.its.core.local.dianbai.filter.InitRealtimeVehicleInfoV2Filter">
+		  		<sql_insert>insert into t_its_vehicle_record(id,plate,plate_color_code,catch_time,road_id,device_id,direction_code,direction_drive,driveway_no,speed,limit_speed,alarm_type_id,blacklist_type_id,panorama_image_path,feature_image_path,create_time)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</sql_insert>	
+				<sql_insert_alarm>insert into t_its_vehicle_record_alarm(id,plate,plate_color_code,catch_time,road_id,device_id,direction_code,direction_drive,driveway_no,speed,limit_speed,alarm_type_id,blacklist_type_id,panorama_image_path,feature_image_path,create_time)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</sql_insert_alarm>							  					
+  			</filter>
+  			
+  			<!-- 按天、24小时（单位）统计交通流量到：T_ITS_TRAFFIC_DAY_STAT 和 T_ITS_TRAFFIC_HOUR_STAT 表-->
+	  		<filter valid="false" class="com.its.core.module.device.vehicle.TrafficFluxStatFilter">
+				<day_stat_sql
+					check_exist = "select id from t_its_traffic_day_stat where road_id = ? and device_id = ? and direction_code=? and lane_no=? and catch_day=?"
+					insert = "insert into t_its_traffic_day_stat (id,road_id,device_id,direction_code,lane_no,catch_day,image_sum) values (?,?,?,?,?,?,?)"
+					update = "update t_its_traffic_day_stat set image_sum = image_sum+1 where ID=?"
+				/>		  
+				
+				<hour_stat_sql
+					check_exist = "select id from t_its_traffic_hour_stat where road_id=? and device_id=? and direction_code=? and lane_no=? and catch_time=?"
+					insert = "insert into t_its_traffic_hour_stat (id,road_id,device_id,direction_code,lane_no,catch_time,flux) values (?,?,?,?,?,?,?)"
+					update = "update t_its_traffic_hour_stat set flux=flux+1 where ID=?"
+				/>			
+				
+	  		</filter>	  		
+	  			  				
+	  	</filters>	  	
+	  		
+  	</realtime_vehicle>
+  </its>
+</param-config>

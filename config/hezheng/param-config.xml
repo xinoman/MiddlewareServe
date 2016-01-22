@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<version no="1.0.0.0" release_time="2012-08-29"/>
+  	
+  	<!--模块装载-->
+  	<modules>  	
+	    
+	    <module run="true" name="com.its.core.module.device.DeviceCommunicateModule" desc="设备通讯模块">
+  			<parameters
+  				port = "9995"
+  			/>
+  		</module> 	
+  		
+  		<!-- 
+  			消息广播模块
+  			protocol_generator：参数定义了消息格式生成器，用户可以根据项目需要自己定义生成消息的格式，未定义时缺省使用：DefaultProtocolGenerator
+  		-->
+  		<module run="true" name="com.its.core.module.broadcast.InfoBroadcastModule" desc="信息广播模块">
+  			<parameters
+  				port = "9901"
+  				protocol_generator = "com.its.core.module.broadcast.impl.ProtocolGenerator"
+  			/>
+  		</module>	
+  		
+  		<module run="false" name="com.its.core.module.filescan.FileScanModule" desc="文件扫描模块"/> 		
+  		
+		<module run="false" name="com.its.core.module.task.TaskModule" desc="定时器任务模块"/>	
+  		 		
+  	</modules>
+  	
+  	<!-- 公共参数 -->
+  	<common>
+  		<!-- 定义SEQUENCE生成工厂 -->
+  		<sequence_factory>
+  			<class name="com.its.core.common.sequence.ItsSequenceFactory"/>
+  		</sequence_factory> 		
+	  	
+	  	
+	  	<!--设备信息载入器配置(标准版)-->
+	  	<device_info
+	  		load_class		="com.its.core.common.DeviceInfoLoaderImpl"
+	  		querySql		="select * from V_ITS_DEVICE"	  		
+	  	/>	 
+	  	
+	  	<!--设备信息载入器配置，从param-config-device-info.xml文件中装载设备信息 -->	
+	  	<!-- 
+	  	<device_info
+	  		load_class	= "com.its.core.common.DeviceInfoLoaderFromXmlImpl"
+	  		load_from	= "param-config-device-info.xml"
+	  	/> 	
+	  	 -->
+  	</common>
+  </its>
+</param-config>

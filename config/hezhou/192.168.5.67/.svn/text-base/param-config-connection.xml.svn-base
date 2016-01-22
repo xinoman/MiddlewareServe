@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>  	
+  	 
+  	 <!-- (SQL Server 2005)数据库连接配置 --> 	
+  	<connection valid="true">
+  		<driver_class>com.microsoft.jdbc.sqlserver.SQLServerDriver</driver_class>
+  		<url>jdbc:microsoft:sqlserver://192.168.5.67:1433;DatabaseName=monitorsystem</url>
+  		<username>sa</username>
+  		<password>sa</password>
+  		<autocommit>true</autocommit>
+  		<pool_size>5</pool_size>  		
+  		<db
+  			name = "oracle"
+  			version = "11.1"
+  		/>
+  	</connection>  	
+  </its>
+</param-config>

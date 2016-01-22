@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		<!-- 全国机动车缉查布控系统接口规范(无锡所)标准版 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>6</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"	
+			/>		
+					
+			<sql>
+  			    <select_vehicle_record>select * from (select a.*, rownum rn from (select * from T_ITS_VEHICLE_RECORD WHERE status = 'N') a WHERE ROWNUM &lt;= 100) WHERE rn &gt;= 1</select_vehicle_record>
+			    <update_vehicle_record>update T_ITS_VEHICLE_RECORD set status = 'Y' where id = ?</update_vehicle_record>
+  			</sql>  			
+  		</task>
+
+		<!-- 全国机动车缉查布控系统接口规范(无锡所)标准版 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>7</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"	
+			/>		
+					
+			<sql>
+  			    <select_vehicle_record>select * from (select a.*, rownum rn from (select * from T_ITS_VEHICLE_RECORD WHERE status = 'N') a WHERE ROWNUM &lt;= 200) WHERE rn &gt;= 101</select_vehicle_record>
+			    <update_vehicle_record>update T_ITS_VEHICLE_RECORD set status = 'Y' where id = ?</update_vehicle_record>
+  			</sql>  			
+  		</task>
+
+		<!-- 全国机动车缉查布控系统接口规范(无锡所)标准版 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>8</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"	
+			/>		
+					
+			<sql>
+  			    <select_vehicle_record>select * from (select a.*, rownum rn from (select * from T_ITS_VEHICLE_RECORD WHERE status = 'N') a WHERE ROWNUM &lt;= 300) WHERE rn &gt;= 201</select_vehicle_record>
+			    <update_vehicle_record>update T_ITS_VEHICLE_RECORD set status = 'Y' where id = ?</update_vehicle_record>
+  			</sql>  			
+  		</task>
+
+		<!-- 全国机动车缉查布控系统接口规范(无锡所)标准版 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>9</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"	
+			/>		
+					
+			<sql>
+  			    <select_vehicle_record>select * from (select a.*, rownum rn from (select * from T_ITS_VEHICLE_RECORD WHERE status = 'N') a WHERE ROWNUM &lt;= 400) WHERE rn &gt;= 301</select_vehicle_record>
+			    <update_vehicle_record>update T_ITS_VEHICLE_RECORD set status = 'Y' where id = ?</update_vehicle_record>
+  			</sql>  			
+  		</task>
+
+		<!-- 全国机动车缉查布控系统接口规范(无锡所)标准版 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>10</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"	
+			/>		
+					
+			<sql>
+  			    <select_vehicle_record>select * from (select a.*, rownum rn from (select * from T_ITS_VEHICLE_RECORD WHERE status = 'N') a WHERE ROWNUM &lt;= 500) WHERE rn &gt;= 401</select_vehicle_record>
+			    <update_vehicle_record>update T_ITS_VEHICLE_RECORD set status = 'Y' where id = ?</update_vehicle_record>
+  			</sql>  			
+  		</task>
+  		
+  		<!-- 全国机动车缉查布控系统接口规范(无锡所)[设备初始化]定时器任务 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsInitTransTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>600</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"					
+			/>		
+					
+			<sql>
+  			    <select_device_info_sql>select id,tp_device_id device_id from T_ITS_DEVICE order by device_id</select_device_info_sql>			    
+  			</sql>  			
+  		</task>
+  		
+  		<!-- 全国机动车缉查布控系统接口规范(无锡所)[时间同步]定时器任务 -->
+  		<task run="true" imp_class="com.its.core.local.dianbai.task.ExportVehicleToWxsSyncTimeTask">  		    	  		
+  			<!--每次运行间隔时间：秒-->
+			<period>7200</period>  			
+ 				
+ 			<ws_info
+				ws_endpoint = "http://10.47.98.188:9080/jcbktrans/services/Trans"					
+			/>	
+		
+  		</task>			
+  		
+  	</timers>
+  </its>
+</param-config>

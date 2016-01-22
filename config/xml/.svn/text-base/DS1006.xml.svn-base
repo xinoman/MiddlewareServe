@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+	<head>
+		<code>DS1006</code>
+		<version>2.0.0.0</version>
+	</head>
+	<body>
+		<content>
+			<zplx>00</zplx>
+			<sbbh>440622010000000001</sbbh>
+			<fxbh>1</fxbh>
+			<hphm><![CDATA[鄂B0131警]]></hphm>
+			<hpys>0</hpys>
+			<wfsj>20121212123510</wfsj>
+			<cdbh>02</cdbh>
+			<clsd>088</clsd>
+			<clxs>060</clxs>
+			<zjtp1><![CDATA[http://127.0.0.1:81/vio/2012/11/X00R10001D1L01I000V000N93567T20120913162444867F0230A000Z00655657S31.JPG]]></zjtp1>
+			<zjtp2><![CDATA[http://127.0.0.1:81/vio/2012/11/X00R10001D1L01I000V000N93567T20120913162444990F0231A000Z00771226S32.JPG]]></zjtp2>
+			<zjtp3><![CDATA[http://127.0.0.1:81/vio/2012/11/X00R10001D1L01I000V000N93567T20120913162445434F0235A000Z00571361S33.JPG]]></zjtp3>
+		</content>
+	</body>
+</message>

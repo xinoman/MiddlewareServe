@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>  	
+  	 
+  	 <!-- (ORACLE)数据库连接配置 --> 	
+  	<connection valid="true">
+  		<driver_class>oracle.jdbc.driver.OracleDriver</driver_class>
+  		<url>jdbc:oracle:thin:@192.168.88.90:1521:ORCL</url>
+  		<username>its_hezheng</username>
+  		<password>its</password>
+  		<autocommit>true</autocommit>
+  		<pool_size>5</pool_size>  		
+  		<db
+  			name = "oracle"
+  			version = "11.1"
+  		/>
+  	</connection>  	
+  </its>
+</param-config>

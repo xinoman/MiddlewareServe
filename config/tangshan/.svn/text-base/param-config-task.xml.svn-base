@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		
+  		<!-- 删除过期目录，目录的命名结构必须为yyyyMMdd -->
+  		<task run="false" imp_class="com.its.core.module.task.impl.DeleteOverdueDirectoryTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>7200</period>
+  			
+  			<!-- 目录地址 -->
+  			<dir>E:/veh/</dir>
+  			
+  			<!-- 过期天数 -->
+  			<overdue_day>30</overdue_day>
+  			
+  		</task> 
+  		
+  		<!-- 间隔一段时间定时执行给定的SQL语句 -->
+  		<task run="true" imp_class="com.its.core.module.task.impl.ExecuteSqlTimerTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>600</period>
+			
+			<sql_list>
+				<sql value="delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C'"/>
+				<sql value="update T_ITS_DEVICE_STATUS set last_connect_time=sysdate"/>
+				<sql value="delete T_ITS_VIOLATE_RECORD where finish_flag='D'"/>
+				<sql value="delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30"/>
+				<sql value="delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30"/>
+				<sql value="delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7"/>				
+				<sql value="update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time &lt; sysdate"/>
+			</sql_list>
+			  			
+  		</task>  		
+  					
+  		
+  	</timers>
+  </its>
+</param-config>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+	<head>
+		<code>DS1005</code>
+		<version>2.0.0.0</version>
+	</head>
+	<body>
+		<content>
+			<sbbh>440622010000000002</sbbh>
+			<fxbh>1</fxbh>
+			<hphm><![CDATA[苏BWB020]]></hphm>
+			<hpys>2</hpys>
+			<jgsj>20121213094031</jgsj>
+			<cdbh>01</cdbh>
+			<clsd>87</clsd>
+			<clxs>120</clxs>
+			<txtp><![CDATA[http://127.0.0.1:81/veh/2012/09/X03R10001D1L01I080V095N58748T20120913105337465F0000A000Z00079750S21.JPG]]></txtp>
+			<qjtp><![CDATA[http://127.0.0.1:81/veh/2012/09/X03R10001D1L01I080V095N58748T20120913105337465F0000A000Z00079750S22.JPG]]></qjtp>
+		</content>
+	</body>
+</message>

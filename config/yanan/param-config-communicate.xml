@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>	
+  	<!--设备通信处理服务器-->
+  	<device_communicate_server> 		
+  	
+  		<!--获取并处理设备传送过来的信息-->
+  		<protocol>
+  		    
+  		    <!--前端向中心上传实时车辆信息-->
+			<head word="DS1005" valid="true" processor="com.its.core.module.device.vehicle.RealtimeVehicleAloneProcessor">
+								
+				<!-- 独立版本 -->
+				<filter>its.realtime_vehicle_alone.filters.filter</filter>
+	  		</head>
+
+  		</protocol>
+
+  	</device_communicate_server>
+  </its>
+</param-config>

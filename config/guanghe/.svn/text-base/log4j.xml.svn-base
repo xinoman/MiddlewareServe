@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- 设置ITS项目输出方式 -->
+	<appender name="appender.its" class="org.apache.log4j.RollingFileAppender">
+	
+		<!-- 设置File参数：日志输出文件名 -->
+		<param name="File" value="log/its.log" />
+		
+		<!-- 设置是否在重新启动服务时，在原有日志的基础添加新日志 -->
+		<param name="Append" value="false" />
+		
+		<param name="MaxFileSize" value="5012000" />
+		<param name="MaxBackupIndex" value="50" />
+		
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="\n[%5p] \n\t%d{yyyy/MM/dd HH\:mm\:ss,SSS} \n\t%l \n\t%m %n" />
+		</layout>
+	</appender>
+
+	<!-- 设置控制台输出 -->
+	<appender name="appender.console" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="DEBUG" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- The default pattern: Date Priority [Category] Message\n -->
+			<param name="ConversionPattern" value="\n[%5p] \n\t%d{yyyy/MM/dd HH\:mm\:ss,SSS} \n\t%l \n\t%m %n" />
+		</layout>
+	</appender>
+
+	<!-- 设置域名限制，即com.its域的日志均输出到下面对应的通道中 -->
+	<logger name="com.its">
+		<!-- 设置级别 -->
+		<level value="debug" />
+		
+		<!-- 与前面的通道id相对应 -->
+		<appender-ref ref="appender.its" />
+		<appender-ref ref="appender.console" />
+	</logger>
+	
+	<logger name="org.apache">
+		<level value="info" />
+		<appender-ref ref="appender.its" />
+		<appender-ref ref="appender.console" />
+	</logger>
+	
+	<!-- 设置接收所有输出的通道
+	<root>
+		<appender-ref ref="appender.console" />
+	</root>
+	 -->
+</log4j:configuration>

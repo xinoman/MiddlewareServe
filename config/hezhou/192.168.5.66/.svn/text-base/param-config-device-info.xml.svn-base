@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<common>
+	  	<!--设备信息
+	  		third_party	：第三方开发商相对应的设备信息
+	  	-->
+	  	<device_info>	  		
+	  		
+	  	</device_info>
+  	</common>
+  </its>
+</param-config>

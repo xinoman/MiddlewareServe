@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		<!-- 英赛腾图片数据导出定时器任务 -->
+  		<task run="true" imp_class="com.its.core.local.hezhou.task.ExportImageFilesReadTaskNew">  			
+  			
+			<!--每次运行间隔时间：秒-->
+  			<period>35</period>
+  			
+  			<!-- 图片访问前缀-->
+  			<http_prefix>http://192.168.5.67</http_prefix>
+  			
+  			<!-- 图片保存目录-->
+  			<img_save_dir>D:/ftphome</img_save_dir>
+		  	
+			<sql>
+			    <select_image_file_record>select top 100 ID,DeviceIP,LicenseNumber,LicenseColor,CatchDate,Direction,RoadId,Speed,ImagePath from dbo.monitor where Status = 'N' order by CatchDate desc</select_image_file_record>
+			    <update_image_file_record>update dbo.monitor set Status = 'Y' where ID = ?</update_image_file_record>
+			</sql>
+  		</task>				
+  		
+  	</timers>
+  </its>
+</param-config>

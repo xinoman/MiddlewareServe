@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>    	
+  		
+  		<!-- 区间测速治安卡口图片文件名调整定时器任务-->
+  		<task run="true" imp_class="com.its.core.local.hezheng.task.VehicleImageRenameTask">  			
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>2</period>
+  			
+  			<!-- 源目录-->
+  			<from_dir>E:/测速FTP/卡口/</from_dir>
+  			
+  			<!-- 目的目录-->
+  			<to_dir>E:/区间测速/</to_dir>
+  			
+  		</task> 		
+  		
+  	</timers>
+  </its>
+</param-config>

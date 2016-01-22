@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>	
+  	<!--设备通信处理服务器-->
+  	<device_communicate_server> 		
+  	
+  		<!--获取并处理设备传送过来的信息-->
+  		<protocol>
+  		    
+  		    <!-- 设备登录 -->
+	  		<head word="DS1001" valid="true" processor="com.its.core.module.device.logon.DeviceLoginProcessor"></head>
+			
+  			<!-- 请求时间校准 -->
+	  		<head word="DS1002" valid="true" processor="com.its.core.module.device.time.RequestTimeAdjustmentProcessor"/>
+	  		
+			<!--设备状态处理器实现-->	  		
+	  		<head word="DS1003" valid="true" processor="com.its.core.module.device.status.DeviceStatusProcessor">
+	  			<select_exist_sql>select device_id from t_its_device_status where device_id=?</select_exist_sql>
+	  			<insert_status_sql>insert into t_its_device_status (id,device_id,direction_code,status,last_connect_time) values (?,?,?,?,?)</insert_status_sql>
+	  			<update_status_sql>update t_its_device_status set status=?,last_connect_time=? where device_id=?</update_status_sql> 			
+			</head>				
+				
+			<!--前端向中心上传实时车辆信息-->
+	  		<head word="DS1005" valid="false" processor="com.its.core.module.device.vehicle.RealtimeVehicleProcessor">
+				
+				<!-- 标准版本 -->
+				<filter>its.realtime_vehicle.filters.filter</filter>
+						
+	  		</head>
+	  		
+	  		<!--前端向中心上传实时车辆信息-->
+			<head word="DS1005" valid="true" processor="com.its.core.module.device.vehicle.RealtimeVehicleV2Processor">
+				<parameters
+					plate_match_ignore_first_char	= "true" 
+					plate_match_leastcheck_bitnum	= "4"
+				/>
+				<plate_monitor_init
+					class 							= "com.its.core.module.device.PlateMonitorMapInitImpl"
+					sql_select_all_blacklist		= "SELECT a.id,a.plate,a.plate_color_code,a.watch_end_time,a.plate_match_num,b.name AS blacklist_type,b.id AS blacklist_type_id FROM t_its_blacklist a LEFT JOIN t_its_blacklist_type b ON a.blacklist_type_id = b.id WHERE a.delete_flag = 'N' and (a.WATCH_END_TIME is null or a.WATCH_END_TIME>sysdate)"
+				/>
+				
+				<!-- 标准版本 -->
+				<filter>its.realtime_vehicle.filters.filter</filter>
+	  		</head>
+
+			<!--获取应用系统（客户端）传送过来的布控和撤控信息-->
+	  		<head word="AS1001" valid="true" processor="com.its.core.module.device.as.ControlProcessor"/>
+  			<head word="AS1002" valid="false" processor="com.its.core.module.device.as.ControlCancelProcessor"/>
+  			<head word="AS1003" valid="true" processor="com.its.core.module.device.as.BlacklistReloadProcessor"/>
+	  		
+	  		<!--前端向中心上传车辆违法信息-->
+	  		<head word="DS1006" valid="true" processor="com.its.core.module.device.violate.RealtimeViolateProcessor">				
+				
+				<!-- 违法信息入库 -->
+				<insert_violate_sql>insert into t_its_violate_record_temp(id,violate_time,road_id,device_id,direction_code,line,speed,limit_speed,create_time,status,plate,plate_type_id,image_path_1,image_path_2,image_path_3,image_path_4,violate_type) values (?,?,?,?,?,?,?,?,?,'N',?,?,?,?,?,?,?)</insert_violate_sql>	
+				
+				<!-- 按天、24小时（单位）统计交通流量到：T_ITS_TRAFFIC_DAY_STAT 和 T_ITS_TRAFFIC_HOUR_STAT 表-->
+				<day_stat_sql
+					check_exist = "select id from t_its_traffic_day_stat where road_id = ? and device_id = ? and direction_code=? and lane_no=? and catch_day=?"
+					insert = "insert into t_its_traffic_day_stat (id,road_id,device_id,direction_code,lane_no,catch_day,image_sum) values (?,?,?,?,?,?,?)"
+					update = "update t_its_traffic_day_stat set image_sum = image_sum+1 where ID=?"
+				/>		  
+				
+				<hour_stat_sql
+					check_exist = "select id from t_its_traffic_hour_stat where road_id=? and device_id=? and direction_code=? and lane_no=? and catch_time=?"
+					insert = "insert into t_its_traffic_hour_stat (id,road_id,device_id,direction_code,lane_no,catch_time,flux) values (?,?,?,?,?,?,?)"
+					update = "update t_its_traffic_hour_stat set flux=flux+1 where ID=?"
+				/>					
+	  		</head>
+  		</protocol>
+
+  	</device_communicate_server>
+  </its>
+</param-config>

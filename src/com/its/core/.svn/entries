@@ -1,0 +1,83 @@
+10
+
+dir
+150
+svn://127.0.0.1/MiddlewareServe/src/com/its/core
+svn://127.0.0.1
+
+
+
+2013-12-28T09:19:02.671875Z
+150
+wgp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1cf25dd2-8b9f-4940-8ea2-ebe6223c688e
+
+test
+dir
+
+database
+dir
+
+module
+dir
+
+common
+dir
+
+constant
+dir
+
+local
+dir
+
+util
+dir
+
+Start.java
+file
+184
+
+
+
+2015-03-14T02:51:32.551187Z
+f841705b1006047aedf68784ab12215c
+2015-04-23T13:05:37.078125Z
+184
+wgp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4349
+

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<!--定时器任务-->
+  	<timers>   
+  	    <!--将审核通过后的违法数据上传公安交通管理综合应用平台-->
+  		<task run="true" imp_class="com.its.core.local.huixian.task.ExportToZlkjPdaserviceTask">  			
+  			
+			<!--每次运行间隔时间：秒-->  			
+			<period>10</period>		
+			
+			<!--图片合并以后在本地保存路径，如为空表示本地不保存-->  			
+			<image_save_path>D:/</image_save_path>	
+  			
+  			<!-- 公安交通管理综合应用平台系统webservice  			    
+  			    epo_endpoint:webservice访问地址
+  			    fxjg:发现机关
+  			 -->
+  			<webservice
+  				epo_endpoint =	"http://10.178.99.36:9080/dzjcWeb/services/autoServices"
+  				fxjg         =  "622630000000"
+  			/>
+  			
+  			<sql  				
+				select_unexport_record			= "select * from T_ITS_VIOLATE_RECORD where finish_flag='F' and (whitelist is null or whitelist ='N') order by violate_time desc"
+				update_violate_record_expire_status	= "update T_ITS_VIOLATE_RECORD set finish_flag='E' where finish_flag='N' and trunc(sysdate - violate_time)>15"
+				update_violate_record_status		= "update T_ITS_VIOLATE_RECORD set finish_flag='Y' where id=?"				
+  			/>			
+  		</task>
+  		
+  	    <!-- 间隔一段时间定时执行给定的SQL语句 -->
+  		<task run="true" imp_class="com.its.core.module.task.impl.ExecuteSqlTimerTask">
+  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>600</period>
+			
+			<sql_list>
+				<sql value="delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C'"/>
+				<sql value="update T_ITS_DEVICE_STATUS set last_connect_time=sysdate"/>
+				<sql value="delete T_ITS_VIOLATE_RECORD where finish_flag='D'"/>
+				<sql value="delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30"/>
+				<sql value="delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30"/>
+				<sql value="delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7"/>				
+				<sql value="update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time &lt; sysdate"/>
+			</sql_list>
+			  			
+  		</task>
+  		
+  		<task run="true" imp_class="com.its.core.module.task.impl.IpMacAddressTask">
+  		  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>7200</period>  	
+  					
+  		</task>
+  		
+  		<!--清理T_ITS_VEHICLE_RECORD_HISTORY中超过特定期限的数据-->
+  		<task run="true" imp_class="com.its.core.module.task.impl.VehicleRecordHistoryCleanTask">
+  		  			
+  			<start_hour>20</start_hour>
+  			<stop_hour>23</stop_hour>
+  			
+  			<!--清理周期，单位：天，清除超过多少天的数据 -->
+  			<clean_cycle>180</clean_cycle>
+  			
+  			<sql
+  				select_overtime_history = "select * from T_ITS_VEHICLE_RECORD_HISTORY where trunc(sysdate-END_TIME)>?"
+  				delete_overtime_history_data = "drop table ${TAB_NAME}"
+  				delete_vehicle_record = "delete T_ITS_VEHICLE_RECORD_HISTORY where id=?"
+  			/>  			
+  			
+  		</task>
+  		
+  		<!-- 将实时车辆信息（T_ITS_VEHICLE_RECORD）超过历史记录表（T_ITS_VEHICLE_RECORD_HISTORY）中的最早记录导入第一张历史表中 -->
+  		<task run="true" imp_class="com.its.core.module.task.impl.ClearExpireVehicleDataTask">
+  		  			
+  			<!--每次运行间隔时间：秒-->
+  			<period>3600</period>
+  			
+  			<sql
+  				select_last_history = "select * from T_ITS_VEHICLE_RECORD_HISTORY order by end_time desc"
+  				transfer_vehicle_record = "insert into ${tableName} (select * from T_ITS_VEHICLE_RECORD where CATCH_TIME between ? and ?)"
+  				delete_overtime_history = "delete T_ITS_VEHICLE_RECORD where CATCH_TIME between ? and ?"
+  			/>  			
+  			
+  		</task>
+  		
+  		<!--将实时车辆信息（T_ITS_VEHICLE_RECORD）过期的记录导入历史记录表中-->
+  		<task run="true" imp_class="com.its.core.module.task.impl.VechileRecordHistoryAndTablespaceBackupTask">  			
+  			
+  			<start_hour>21</start_hour>
+  			<stop_hour>23</stop_hour>
+  			
+  			<!-- 备份周期，单位：天，超过多少天的数据备份到历史记录表中 -->
+  			<backup_cycle>20</backup_cycle>
+  			
+  			<!-- 默认实时车辆信息（T_ITS_VEHICLE_RECORD）记录缓存天数 -->
+  			<cache_day>1</cache_day>
+  			
+  			<sql>
+  				<oracle>
+  					<select_last_history>select * from T_ITS_VEHICLE_RECORD_HISTORY order by end_time desc</select_last_history>
+  					<select_first_vehicle_record>select * from ( select row_.*, rownum rownum_ from (select * from T_ITS_VEHICLE_RECORD order by catch_time) row_) where rownum=1</select_first_vehicle_record>
+  					<insert_vehicle_record_history>insert into T_ITS_VEHICLE_RECORD_HISTORY (ID, TABLE_NAME, START_TIME, END_TIME, RECORD_COUNT, CREATE_TIME) values (?,?,?,?,?,?)</insert_vehicle_record_history>
+  					<create_history>
+  						<check_exist>select * from USER_TABLES where TABLE_NAME='T_ITS_VEHICLE_RECORD_${YYYYMMDD}'</check_exist>
+						<tablespace>
+						    create tablespace ITS_${YYYYMMDD} 
+							logging datafile 'D:\app\Administrator\oradata\orcl\ITS_${YYYYMMDD}.dbf' 
+							size 50M
+							autoextend on  
+							next 3M maxsize 32767M
+							extent management local
+						</tablespace>
+						<table>
+							CREATE TABLE T_ITS_VEHICLE_RECORD_${YYYYMMDD}
+							(
+							  id                  NUMBER(20) not null,
+							  plate               VARCHAR2(16),
+							  plate_color_code    NUMBER(1),
+							  catch_time          DATE not null,
+							  road_id             NUMBER(8),
+							  device_id           VARCHAR2(32) not null,
+							  direction_code      VARCHAR2(1),
+							  direction_drive     VARCHAR2(1) default '0' not null,
+							  driveway_no         VARCHAR2(2),
+							  speed               NUMBER(3),
+							  limit_speed         NUMBER(3),
+							  alarm_type_id       VARCHAR2(1),
+							  blacklist_type_id   NUMBER(8),
+							  feature_image_path  VARCHAR2(160),
+							  panorama_image_path VARCHAR2(160),
+							  create_time         DATE not null,
+							  status              VARCHAR2(2) default 'N' not null
+							)		
+							tablespace ITS_${YYYYMMDD}
+							pctfree 10
+							initrans 1
+							maxtrans 255
+							storage
+							(
+							  initial 64K
+							  minextents 1
+							  maxextents unlimited
+							)			
+						</table>
+						<index>
+							CREATE UNIQUE INDEX PK_VEH_PASS_RECORD_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (ID);
+							CREATE INDEX ID_VRCT_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (CATCH_TIME);
+							CREATE INDEX ID_VRRI_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (ROAD_ID);
+							CREATE INDEX ID_VRDC_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (DIRECTION_CODE);
+							CREATE INDEX ID_VRP_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (PLATE);
+							CREATE INDEX ID_VRPCC_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (PLATE_COLOR_CODE);
+							CREATE INDEX ID_VRDI_${YYYYMMDD} ON T_ITS_VEHICLE_RECORD_${YYYYMMDD} (DEVICE_ID);
+							CREATE INDEX ID_VRDD_${YYYYMMDD} on T_ITS_VEHICLE_RECORD_${YYYYMMDD} (DIRECTION_DRIVE);
+						</index>
+						
+  					</create_history>
+  					<transfer>
+  						<transfer_vehicle_record>insert into ${tableName} (select * from T_ITS_VEHICLE_RECORD where CATCH_TIME between ? and ?)</transfer_vehicle_record>
+  						<select_overtime_vehicle_record>select count(*) as recordCount from T_ITS_VEHICLE_RECORD where trunc(sysdate-CATCH_TIME)>=?</select_overtime_vehicle_record>
+  						<delete_vehicle_record>delete T_ITS_VEHICLE_RECORD where CATCH_TIME between ? and ?</delete_vehicle_record>
+  					</transfer>
+  				</oracle>
+  			</sql>	
+  		</task>				
+  		
+  	</timers>
+  </its>
+</param-config>

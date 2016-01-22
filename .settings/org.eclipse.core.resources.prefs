@@ -1,0 +1,14 @@
+#Wed Jul 23 20:07:41 CST 2014
+eclipse.preferences.version=1
+encoding//src/com/its/core/local/dianbai/ws/Trans.java=UTF-8
+encoding//src/com/its/core/local/dianbai/ws/TransService.java=UTF-8
+encoding//src/com/its/core/local/dianbai/ws/TransServiceLocator.java=UTF-8
+encoding//src/com/its/core/local/dianbai/ws/TransSoapBindingStub.java=UTF-8
+encoding//src/com/its/core/local/hezheng/ws/AutoServices.java=UTF-8
+encoding//src/com/its/core/local/hezheng/ws/AutoServicesHttpBindingStub.java=UTF-8
+encoding//src/com/its/core/local/hezheng/ws/AutoServicesLocator.java=UTF-8
+encoding//src/com/its/core/local/hezheng/ws/AutoServicesPortType.java=UTF-8
+encoding//src/com/its/core/local/hezhou/tmri/tfc/webservice/TmriSoapBindingStub.java=UTF-8
+encoding//src/com/its/core/local/hezhou/tmri/tfc/webservice/Trans.java=UTF-8
+encoding//src/com/its/core/local/hezhou/tmri/tfc/webservice/TransService.java=UTF-8
+encoding//src/com/its/core/local/hezhou/tmri/tfc/webservice/TransServiceLocator.java=UTF-8

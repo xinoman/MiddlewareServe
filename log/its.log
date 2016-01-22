@@ -1,0 +1,1447 @@
+
+[ INFO] 
+	2015/09/17 11:35:12,750 
+	com.its.core.Start.main(Start.java:69) 
+	Version:1.0.0.0	Release Time:2012-08-29 
+
+[DEBUG] 
+	2015/09/17 11:35:12,859 
+	com.its.core.database.DriverManagerConnectionProvider.configure(DriverManagerConnectionProvider.java:41) 
+	Connection pool size: 5 
+
+[DEBUG] 
+	2015/09/17 11:35:12,875 
+	com.its.core.database.DriverManagerConnectionProvider.configure(DriverManagerConnectionProvider.java:44) 
+	autocommit mode: true 
+
+[ INFO] 
+	2015/09/17 11:35:12,968 
+	com.its.core.database.DriverManagerConnectionProvider.configure(DriverManagerConnectionProvider.java:74) 
+	using driver: oracle.jdbc.driver.OracleDriver at URL: jdbc:oracle:thin:@127.0.0.1:1521:ORCL 
+
+[DEBUG] 
+	2015/09/17 11:35:12,984 
+	com.its.core.database.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:114) 
+	opening new JDBC connection 
+
+[DEBUG] 
+	2015/09/17 11:35:13,593 
+	com.its.core.database.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:120) 
+	created connection to: jdbc:oracle:thin:@127.0.0.1:1521:ORCL, Isolation Level: 2 
+
+[ INFO] 
+	2015/09/17 11:35:13,593 
+	com.its.core.Start.main(Start.java:79) 
+	测试连接 = oracle.jdbc.driver.OracleConnection@1b9240e 成功！ 
+
+[DEBUG] 
+	2015/09/17 11:35:13,640 
+	com.its.core.common.DeviceInfoLoaderFactory.initDeviceInfoLoader(DeviceInfoLoaderFactory.java:71) 
+	Device load class = com.its.core.common.DeviceInfoLoaderImpl 
+
+[DEBUG] 
+	2015/09/17 11:35:13,750 
+	com.its.core.common.DeviceInfoLoaderImpl.getDeviceMap(DeviceInfoLoaderImpl.java:91) 
+	Load device :5110113576	51.101.135.76 
+
+[DEBUG] 
+	2015/09/17 11:35:13,750 
+	com.its.core.common.DeviceInfoLoaderImpl.getDeviceMap(DeviceInfoLoaderImpl.java:91) 
+	Load device :440622010001	192.168.1.100 
+
+[DEBUG] 
+	2015/09/17 11:35:13,765 
+	com.its.core.common.DeviceInfoLoaderImpl.getDeviceMap(DeviceInfoLoaderImpl.java:91) 
+	Load device :5110113536	51.101.135.36 
+
+[DEBUG] 
+	2015/09/17 11:35:13,765 
+	com.its.core.common.DeviceInfoLoaderImpl.getDeviceMap(DeviceInfoLoaderImpl.java:91) 
+	Load device :5110113575	51.101.135.75 
+
+[DEBUG] 
+	2015/09/17 11:35:13,765 
+	com.its.core.common.DeviceInfoLoaderImpl.getDeviceMap(DeviceInfoLoaderImpl.java:91) 
+	Load device :5110113552	51.101.135.52 
+
+[DEBUG] 
+	2015/09/17 11:35:13,765 
+	com.its.core.common.DeviceInfoLoaderImpl.getDeviceMap(DeviceInfoLoaderImpl.java:93) 
+	装载5套设备信息！ 
+
+[DEBUG] 
+	2015/09/17 11:35:13,890 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.logon.DeviceLoginProcessor 
+
+[DEBUG] 
+	2015/09/17 11:35:13,906 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.time.RequestTimeAdjustmentProcessor 
+
+[DEBUG] 
+	2015/09/17 11:35:13,937 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.status.DeviceStatusProcessor 
+
+[DEBUG] 
+	2015/09/17 11:35:13,984 
+	com.its.core.module.device.vehicle.RealtimeVehicleV2Processor.configure(RealtimeVehicleV2Processor.java:45) 
+	plateMonitorInitClass=com.its.core.module.device.PlateMonitorMapInitImpl 
+
+[DEBUG] 
+	2015/09/17 11:35:14,000 
+	com.its.core.module.device.vehicle.RealtimeVehicleV2Processor.configure(RealtimeVehicleV2Processor.java:52) 
+	filter size = 2 
+
+[DEBUG] 
+	2015/09/17 11:35:14,015 
+	com.its.core.module.device.vehicle.RealtimeVehicleV2Processor.configure(RealtimeVehicleV2Processor.java:62) 
+	Loaded : com.its.core.module.device.vehicle.filter.InitRealtimeVehicleInfoV2Filter 
+
+[DEBUG] 
+	2015/09/17 11:35:14,046 
+	com.its.core.module.device.vehicle.RealtimeVehicleV2Processor.configure(RealtimeVehicleV2Processor.java:62) 
+	Loaded : com.its.core.module.device.vehicle.TrafficFluxStatFilter 
+
+[DEBUG] 
+	2015/09/17 11:35:14,046 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.vehicle.RealtimeVehicleV2Processor 
+
+[DEBUG] 
+	2015/09/17 11:35:14,078 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.as.ControlProcessor 
+
+[DEBUG] 
+	2015/09/17 11:35:14,093 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.as.BlacklistReloadProcessor 
+
+[DEBUG] 
+	2015/09/17 11:35:14,156 
+	com.its.core.module.device.DeviceCommunicateModule.config(DeviceCommunicateModule.java:90) 
+	Loaded : com.its.core.module.device.violate.RealtimeViolateProcessor 
+
+[ INFO] 
+	2015/09/17 11:35:14,546 
+	com.its.core.module.device.DeviceCommunicateModule.start(DeviceCommunicateModule.java:134) 
+	DeviceCommunicateModule Listening on port 9995 
+
+[DEBUG] 
+	2015/09/17 11:35:14,546 
+	com.its.core.Start.main(Start.java:109) 
+	Loaded module : com.its.core.module.device.DeviceCommunicateModule 
+
+[DEBUG] 
+	2015/09/17 11:35:14,640 
+	com.its.core.module.broadcast.InfoBroadcastModule.config(InfoBroadcastModule.java:75) 
+	Loading IProtocolGenerator : com.its.core.module.broadcast.impl.ProtocolGenerator 
+
+[ INFO] 
+	2015/09/17 11:35:14,671 
+	com.its.core.module.broadcast.InfoBroadcastModule.start(InfoBroadcastModule.java:116) 
+	InfoBroadcastModule Listening on port 9901 
+
+[DEBUG] 
+	2015/09/17 11:35:14,671 
+	com.its.core.Start.main(Start.java:109) 
+	Loaded module : com.its.core.module.broadcast.InfoBroadcastModule 
+
+[ INFO] 
+	2015/09/17 11:35:14,859 
+	com.its.core.module.task.TaskModule.config(TaskModule.java:45) 
+	装载定时器任务：com.its.core.module.task.impl.IpMacAddressTask 
+
+[DEBUG] 
+	2015/09/17 11:35:14,937 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:46) 
+	size = 8 
+
+[DEBUG] 
+	2015/09/17 11:35:14,953 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 11:35:14,984 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 11:35:15,015 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 11:35:15,031 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 11:35:15,046 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 11:35:15,109 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 11:35:15,125 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 11:35:15,140 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.configureSpecificallyProperties(ExecuteSqlTimerTask.java:49) 
+	update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[ INFO] 
+	2015/09/17 11:35:15,140 
+	com.its.core.module.task.TaskModule.config(TaskModule.java:45) 
+	装载定时器任务：com.its.core.module.task.impl.ExecuteSqlTimerTask 
+
+[ INFO] 
+	2015/09/17 11:35:15,328 
+	com.its.core.module.task.TaskModule.config(TaskModule.java:45) 
+	装载定时器任务：com.its.core.module.task.impl.VehicleRecordHistoryCleanTask 
+
+[ INFO] 
+	2015/09/17 11:35:15,437 
+	com.its.core.module.task.TaskModule.config(TaskModule.java:45) 
+	装载定时器任务：com.its.core.module.task.impl.ClearExpireVehicleDataTask 
+
+[ INFO] 
+	2015/09/17 11:35:15,671 
+	com.its.core.module.task.TaskModule.config(TaskModule.java:45) 
+	装载定时器任务：com.its.core.module.task.impl.VechileRecordHistoryAndTablespaceBackupTask 
+
+[DEBUG] 
+	2015/09/17 11:35:15,671 
+	com.its.core.Start.main(Start.java:109) 
+	Loaded module : com.its.core.module.task.TaskModule 
+
+[ INFO] 
+	2015/09/17 11:35:19,328 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] CREATED 
+
+[ INFO] 
+	2015/09/17 11:35:19,343 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] OPENED 
+
+[ INFO] 
+	2015/09/17 11:35:19,343 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] RECEIVED: register:realtime-vehicle 
+
+[ INFO] 
+	2015/09/17 11:35:19,343 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageReceived(InfoBroadcastProtocolHandler.java:56) 
+	从(SOCKET, R: /192.168.44.151:1360, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901)接收消息：register:realtime-vehicle 
+
+[ INFO] 
+	2015/09/17 11:35:25,515 
+	com.its.core.module.device.DeviceProtocolHandler.sessionOpened(DeviceProtocolHandler.java:44) 
+	新连接:/127.0.0.1:1363 
+
+[DEBUG] 
+	2015/09/17 11:35:25,515 
+	com.its.core.module.device.DeviceProtocolHandler.sessionOpened(DeviceProtocolHandler.java:53) 
+	保存新连接:/127.0.0.1:1363 
+
+[ INFO] 
+	2015/09/17 11:35:27,031 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:64) 
+	接收信息：<?xml version="1.0" encoding="UTF-8"?><message><head><code>DS1005</code><version>2.0.0.0</version></head><body><content><sbbh>440622010001</sbbh><fxbh>2</fxbh><hphm><![CDATA[苏BWB020]]></hphm><hpys>2</hpys><jgsj>201509176094031</jgsj><cdbh>01</cdbh><clsd>125</clsd><clxs>120</clxs><txtp><![CDATA[http://127.0.0.1:81/veh/2012/11/095610_921.jpg]]></txtp></content></body></message> 
+
+[DEBUG] 
+	2015/09/17 11:35:27,031 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:95) 
+	当前队列长度:1 
+
+[DEBUG] 
+	2015/09/17 11:35:27,078 
+	com.its.core.common.sequence.SequenceFactory.<clinit>(SequenceFactory.java:18) 
+	Load SequenceFactory = com.its.core.common.sequence.ItsSequenceFactory 
+
+[DEBUG] 
+	2015/09/17 11:35:27,078 
+	com.its.core.database.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:114) 
+	opening new JDBC connection 
+
+[DEBUG] 
+	2015/09/17 11:35:27,156 
+	com.its.core.database.DriverManagerConnectionProvider.getConnection(DriverManagerConnectionProvider.java:120) 
+	created connection to: jdbc:oracle:thin:@127.0.0.1:1521:ORCL, Isolation Level: 2 
+
+[DEBUG] 
+	2015/09/17 11:35:27,187 
+	com.its.core.module.device.vehicle.filter.InitRealtimeVehicleInfoV2Filter.insertVehicleRecord(InitRealtimeVehicleInfoV2Filter.java:279) 
+	入库成功生成的ID为：100000000701 
+
+[DEBUG] 
+	2015/09/17 11:35:27,187 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:36) 
+	registerProtocol=register:realtime-vehicle	deviceId=440622010001 
+
+[DEBUG] 
+	2015/09/17 11:35:27,187 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:56) 
+	广播数据：realtime-vehicle|1.0.0.1|100000000701|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1360, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 11:35:27,187 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] WRITE: realtime-vehicle|1.0.0.1|100000000701|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 11:35:27,203 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] SENT: realtime-vehicle|1.0.0.1|100000000701|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 11:35:27,203 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageSent(InfoBroadcastProtocolHandler.java:150) 
+	发送信息：realtime-vehicle|1.0.0.1|100000000701|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1360, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 11:36:14,937 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:37:15,015 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:38:15,171 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:39:15,281 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:40:15,343 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:41:15,390 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:41:19,859 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] RECEIVED: close 
+
+[ INFO] 
+	2015/09/17 11:41:19,859 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageReceived(InfoBroadcastProtocolHandler.java:56) 
+	从(SOCKET, R: /192.168.44.151:1360, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901)接收消息：close 
+
+[DEBUG] 
+	2015/09/17 11:41:19,875 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageReceived(InfoBroadcastProtocolHandler.java:84) 
+	关闭当前SESSION！ 
+
+[ INFO] 
+	2015/09/17 11:41:19,875 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1360] CLOSED 
+
+[ INFO] 
+	2015/09/17 11:41:25,062 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1524] CREATED 
+
+[ INFO] 
+	2015/09/17 11:41:25,062 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1524] OPENED 
+
+[ INFO] 
+	2015/09/17 11:41:25,062 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1524] RECEIVED: register:realtime-vehicle 
+
+[ INFO] 
+	2015/09/17 11:41:25,062 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageReceived(InfoBroadcastProtocolHandler.java:56) 
+	从(SOCKET, R: /192.168.44.151:1524, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901)接收消息：register:realtime-vehicle 
+
+[ INFO] 
+	2015/09/17 11:41:31,906 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:64) 
+	接收信息：<?xml version="1.0" encoding="UTF-8"?><message><head><code>DS1005</code><version>2.0.0.0</version></head><body><content><sbbh>440622010001</sbbh><fxbh>2</fxbh><hphm><![CDATA[苏BWB020]]></hphm><hpys>2</hpys><jgsj>201509176094031</jgsj><cdbh>01</cdbh><clsd>125</clsd><clxs>120</clxs><txtp><![CDATA[http://127.0.0.1:81/veh/2012/11/095610_921.jpg]]></txtp></content></body></message> 
+
+[DEBUG] 
+	2015/09/17 11:41:31,906 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:95) 
+	当前队列长度:0 
+
+[DEBUG] 
+	2015/09/17 11:41:31,921 
+	com.its.core.module.device.vehicle.filter.InitRealtimeVehicleInfoV2Filter.insertVehicleRecord(InitRealtimeVehicleInfoV2Filter.java:279) 
+	入库成功生成的ID为：100000000702 
+
+[DEBUG] 
+	2015/09/17 11:41:31,921 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:36) 
+	registerProtocol=register:realtime-vehicle	deviceId=440622010001 
+
+[DEBUG] 
+	2015/09/17 11:41:31,921 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:56) 
+	广播数据：realtime-vehicle|1.0.0.1|100000000702|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1524, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 11:41:31,953 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1524] WRITE: realtime-vehicle|1.0.0.1|100000000702|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 11:41:31,953 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1524] SENT: realtime-vehicle|1.0.0.1|100000000702|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 11:41:31,953 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageSent(InfoBroadcastProtocolHandler.java:150) 
+	发送信息：realtime-vehicle|1.0.0.1|100000000702|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1524, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 11:42:15,468 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:43:15,500 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:44:15,515 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 11:45:15,500 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 11:45:15,546 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 2 
+
+[DEBUG] 
+	2015/09/17 11:45:15,546 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[ INFO] 
+	2015/09/17 11:45:15,546 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 11:45:15,593 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:45:15,593 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 11:45:15,609 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:45:15,609 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 11:45:15,656 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:45:15,656 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 11:45:15,703 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:45:15,703 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 11:45:15,718 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:45:15,718 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 11:45:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:45:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 11:45:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ INFO] 
+	2015/09/17 11:46:15,578 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:47:15,593 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:48:15,625 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:49:15,656 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:50:15,671 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:51:15,687 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:52:15,718 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:53:15,734 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:54:15,765 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 11:55:15,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 11:55:15,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 11:55:15,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 11:55:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ INFO] 
+	2015/09/17 11:55:15,781 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:56:15,812 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:57:15,843 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:58:15,875 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 11:59:15,906 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:00:15,921 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:01:15,953 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:02:15,984 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:03:16,000 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:04:16,031 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 12:05:15,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 12:05:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:05:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 12:05:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ INFO] 
+	2015/09/17 12:05:16,046 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:06:16,078 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:07:16,093 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:08:16,171 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:09:16,187 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:10:16,218 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:11:16,234 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:12:16,265 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:13:16,296 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:14:16,328 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:15:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 12:15:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:15:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 12:15:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ INFO] 
+	2015/09/17 12:15:16,343 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:16:16,375 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:17:16,390 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:18:16,421 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:19:16,437 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:20:16,468 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:21:16,484 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:22:16,515 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:23:16,546 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:24:16,562 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 12:25:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:25:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 12:25:15,765 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ INFO] 
+	2015/09/17 12:25:16,578 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:26:16,609 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:27:16,625 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:28:16,656 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:29:16,687 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:30:16,703 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:31:16,765 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:32:16,796 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:33:16,828 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:45:19,859 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 12:45:22,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 12:45:22,734 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,750 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 12:45:22,765 
+	com.its.core.module.task.impl.ClearExpireVehicleDataTask.execute(ClearExpireVehicleDataTask.java:71) 
+	select * from T_ITS_VEHICLE_RECORD_HISTORY order by end_time desc 
+
+[DEBUG] 
+	2015/09/17 12:45:22,796 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,796 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 12:45:22,796 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,796 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 12:45:22,812 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ WARN] 
+	2015/09/17 12:45:22,984 
+	org.apache.mina.util.SessionLog.warn(SessionLog.java:91) 
+	[/192.168.44.151:1524] EXCEPTION: 
+java.io.IOException: 远程主机强迫关闭了一个现有的连接。
+	at sun.nio.ch.SocketDispatcher.read0(Native Method)
+	at sun.nio.ch.SocketDispatcher.read(Unknown Source)
+	at sun.nio.ch.IOUtil.readIntoNativeBuffer(Unknown Source)
+	at sun.nio.ch.IOUtil.read(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.read(Unknown Source)
+	at org.apache.mina.transport.socket.nio.SocketIoProcessor.read(SocketIoProcessor.java:201)
+	at org.apache.mina.transport.socket.nio.SocketIoProcessor.process(SocketIoProcessor.java:181)
+	at org.apache.mina.transport.socket.nio.SocketIoProcessor.access$500(SocketIoProcessor.java:44)
+	at org.apache.mina.transport.socket.nio.SocketIoProcessor$Worker.run(SocketIoProcessor.java:448)
+	at org.apache.mina.util.NamePreservingRunnable.run(NamePreservingRunnable.java:39)
+	at java.lang.Thread.run(Unknown Source)
+
+[ERROR] 
+	2015/09/17 12:45:22,984 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.exceptionCaught(InfoBroadcastProtocolHandler.java:123) 
+	exceptionCaught:(SOCKET, R: /192.168.44.151:1524, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) : java.io.IOException: 远程主机强迫关闭了一个现有的连接。 
+
+[ INFO] 
+	2015/09/17 12:45:22,984 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1524] CLOSED 
+
+[ INFO] 
+	2015/09/17 12:46:19,890 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:47:19,921 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:48:19,968 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:49:20,000 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:50:20,015 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:51:20,046 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:52:20,093 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:53:20,125 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:54:20,218 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:54:53,656 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] CREATED 
+
+[ INFO] 
+	2015/09/17 12:54:53,656 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] OPENED 
+
+[ INFO] 
+	2015/09/17 12:54:53,656 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] RECEIVED: register:realtime-vehicle 
+
+[ INFO] 
+	2015/09/17 12:54:53,656 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageReceived(InfoBroadcastProtocolHandler.java:56) 
+	从(SOCKET, R: /192.168.44.151:1624, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901)接收消息：register:realtime-vehicle 
+
+[ INFO] 
+	2015/09/17 12:55:00,843 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:64) 
+	接收信息：<?xml version="1.0" encoding="UTF-8"?><message><head><code>DS1005</code><version>2.0.0.0</version></head><body><content><sbbh>440622010001</sbbh><fxbh>2</fxbh><hphm><![CDATA[苏BWB020]]></hphm><hpys>2</hpys><jgsj>201509176094031</jgsj><cdbh>01</cdbh><clsd>125</clsd><clxs>120</clxs><txtp><![CDATA[http://127.0.0.1:81/veh/2012/11/095610_921.jpg]]></txtp></content></body></message> 
+
+[DEBUG] 
+	2015/09/17 12:55:00,843 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:95) 
+	当前队列长度:1 
+
+[DEBUG] 
+	2015/09/17 12:55:00,875 
+	com.its.core.module.device.vehicle.filter.InitRealtimeVehicleInfoV2Filter.insertVehicleRecord(InitRealtimeVehicleInfoV2Filter.java:279) 
+	入库成功生成的ID为：100000000703 
+
+[DEBUG] 
+	2015/09/17 12:55:00,875 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:36) 
+	registerProtocol=register:realtime-vehicle	deviceId=440622010001 
+
+[DEBUG] 
+	2015/09/17 12:55:00,875 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:56) 
+	广播数据：realtime-vehicle|1.0.0.1|100000000703|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1624, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 12:55:00,875 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] WRITE: realtime-vehicle|1.0.0.1|100000000703|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 12:55:00,875 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] SENT: realtime-vehicle|1.0.0.1|100000000703|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 12:55:00,875 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageSent(InfoBroadcastProtocolHandler.java:150) 
+	发送信息：realtime-vehicle|1.0.0.1|100000000703|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1624, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 12:55:18,859 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:64) 
+	接收信息：<?xml version="1.0" encoding="UTF-8"?><message><head><code>DS1005</code><version>2.0.0.0</version></head><body><content><sbbh>440622010001</sbbh><fxbh>2</fxbh><hphm><![CDATA[苏BWB020]]></hphm><hpys>2</hpys><jgsj>201509176094031</jgsj><cdbh>01</cdbh><clsd>125</clsd><clxs>120</clxs><txtp><![CDATA[http://127.0.0.1:81/veh/2012/11/095610_921.jpg]]></txtp></content></body></message> 
+
+[DEBUG] 
+	2015/09/17 12:55:18,859 
+	com.its.core.module.device.DeviceProtocolHandler.messageReceived(DeviceProtocolHandler.java:95) 
+	当前队列长度:1 
+
+[DEBUG] 
+	2015/09/17 12:55:18,875 
+	com.its.core.module.device.vehicle.filter.InitRealtimeVehicleInfoV2Filter.insertVehicleRecord(InitRealtimeVehicleInfoV2Filter.java:279) 
+	入库成功生成的ID为：100000000704 
+
+[DEBUG] 
+	2015/09/17 12:55:18,875 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:36) 
+	registerProtocol=register:realtime-vehicle	deviceId=440622010001 
+
+[DEBUG] 
+	2015/09/17 12:55:18,875 
+	com.its.core.module.broadcast.InfoBroadcastThread.run(InfoBroadcastThread.java:56) 
+	广播数据：realtime-vehicle|1.0.0.1|100000000704|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1624, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 12:55:18,875 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] WRITE: realtime-vehicle|1.0.0.1|100000000704|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 12:55:18,875 
+	org.apache.mina.util.SessionLog.info(SessionLog.java:69) 
+	[/192.168.44.151:1624] SENT: realtime-vehicle|1.0.0.1|100000000704|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 
+
+[ INFO] 
+	2015/09/17 12:55:18,875 
+	com.its.core.module.broadcast.InfoBroadcastProtocolHandler.messageSent(InfoBroadcastProtocolHandler.java:150) 
+	发送信息：realtime-vehicle|1.0.0.1|100000000704|苏BWB020|2|2015-09-19 13:34:03|10000020|政务服务中心|440622010001|2|0|01|125|120|-1|null|http://127.0.0.1:81/veh/2012/11/095610_921.jpg|null 到 (SOCKET, R: /192.168.44.151:1624, L: /192.168.44.151:9901, S: 0.0.0.0/0.0.0.0:9901) 
+
+[ INFO] 
+	2015/09/17 12:55:20,296 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[DEBUG] 
+	2015/09/17 12:55:22,859 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP_GD t where trunc(sysdate-violate_time)>=2 
+
+[DEBUG] 
+	2015/09/17 12:55:22,859 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,859 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD_TEMP where STATUS='F' or STATUS='C' 
+
+[DEBUG] 
+	2015/09/17 12:55:22,859 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,859 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update T_ITS_DEVICE_STATUS set last_connect_time=sysdate 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_RECORD where finish_flag='D' 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_LOG t where trunc(sysdate-log_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_SYSTEM_EXCEPTION_LOG where trunc(sysdate-create_time)>=30 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：delete T_ITS_VIOLATE_DELETE_IMAGE where status = 'Y' and trunc(sysdate-confirm_time)>=7 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[DEBUG] 
+	2015/09/17 12:55:22,875 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:67) 
+	执行：update t_its_blacklist t set watch_expire='Y' where watch_circle = 0 and watch_expire = 'N'and watch_end_time < sysdate 
+
+[DEBUG] 
+	2015/09/17 12:55:22,890 
+	com.its.core.module.task.impl.ExecuteSqlTimerTask.execute(ExecuteSqlTimerTask.java:70) 
+	update num = 0 
+
+[ INFO] 
+	2015/09/17 12:56:20,312 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:57:20,343 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:58:20,375 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 
+
+[ INFO] 
+	2015/09/17 12:59:20,390 
+	com.its.core.module.task.impl.IpMacAddressTask.execute(IpMacAddressTask.java:63) 
+	Computer name = its-wgp IP = 192.168.44.151 MAC = 00-1B-77-8A-A4-5A 

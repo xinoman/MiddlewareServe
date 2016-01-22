@@ -1,0 +1,183 @@
+/**
+ * 
+ */
+package com.its.core.test;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.its.core.constant.SystemConstant;
+import com.its.core.util.DateHelper;
+import com.its.core.util.FileHelper;
+import com.its.core.util.ImageHelper;
+import com.its.core.util.StringHelper;
+
+
+/**
+ * 创建日期 2013-6-16 下午06:25:28
+ * @author GuoPing.Wu
+ * Copyright: Xinoman Technologies CO.,LTD.
+ */
+public class Test{
+	
+	public static int findCharacterPosition(String str, String target, int index) {
+		int i = 0;
+		int m = 0;
+		char c = new String(target).charAt(0);
+		char[] ch = str.toCharArray();
+		for (int j = 0; j < ch.length; j++) {
+			if (ch[j] == c) {
+				i++;
+				if (i == index) {
+					m = j;
+					break;
+				}
+			}
+		}
+		return m;
+	}
+	
+	public static int getCharacterPosition(String str,String target,int index) {
+		Matcher slashMatcher = Pattern.compile(target).matcher(str);
+		int mIdx = 0;
+		while (slashMatcher.find()) {
+			mIdx++;
+			if (mIdx == index) {
+				break;
+			}
+		}
+		return slashMatcher.start();
+	}
+	
+	
+
+    
+	public static Long[] StringArrayToLongArray(String[] values) {
+
+		Long[] longs = null;
+
+		if (values != null && values.length > 0) {
+			longs = new Long[values.length];
+
+			for (int i = 0; i < values.length; i++) {
+				String str = values[i];
+				long lg = Long.valueOf(str);
+				longs[i] = lg;
+			}
+		}
+		return longs;
+	}
+	
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws Exception{
+		String str = "T20131105155227029_D4_L2_R001_粤B2682S_蓝_1302_[1216,1098,1732,1610].RL.jpg";
+		String[] fileName = StringHelper.split(str, "_");
+//		String prefix = str.substring(0, 19);
+//		String postfix = "b-" + fileName[1]+"-" +fileName[2];
+//		String postfix = "2-" + str.substring(str.lastIndexOf("-") + 1,str.lastIndexOf(".")) + ".jpg";
+		System.out.println(str.substring(1, 15));
+		System.out.println(fileName[3]);
+		String line = fileName[2];
+		
+		System.out.println("0" + fileName[2].substring(1));
+		
+		
+//		System.out.println(str.substring(2, 16));
+//		System.out.println(fileName[4]);
+//		System.out.println(fileName[5]);
+//		String time = "2013-7-28 9:58:24";
+//		System.out.println(DateHelper.parseDateString(time, "yyyy-MM-dd HH:mm:ss"));
+//		System.out.println(DateHelper.dateToString(DateHelper.parseDateString(time, "yyyy-MM-dd HH:mm:ss"), "yyyyMMdd"));
+//		System.out.println(DateHelper.dateToString(DateHelper.parseDateString(time, "yyyy-MM-dd HH:mm:ss"), "HH"));
+//		System.out.println(DateHelper.dateToString(DateHelper.parseDateString(time, "yyyy-MM-dd HH:mm:ss"),"yyyyMMddHHmmssSSS"));
+//		byte[] imageA = ImageHelper.getImageBytes("http://192.168.1.104:81/veh/1.jpg");
+//		byte[] imageB = ImageHelper.getImageBytes("http://192.168.1.104:81/veh/2.jpg");
+//		byte[] imageC = ImageHelper.getImageBytes("http://192.168.1.104:81/veh/3.jpg");
+//		FileHelper.writeFile(ImageHelper.compose(ImageHelper.compose(imageA, imageB, true), imageC, true), "D:/5.jpg");
+		
+//		String lineNo = "01,02";
+//		String[] line = StringHelper.split(lineNo, ",");
+//		for(int i=0;i<line.length;i++) {
+//			System.out.println(line[i]);
+//		}
+//		String featureImageUrl = "http://127.0.0.1:81/veh/2012/11/X01R440622010000000001D1L01I080V095N58748T20130503105337465S11.JPG";
+//		System.out.println(featureImageUrl.substring(0, featureImageUrl.indexOf("veh")+3));
+
+//		String url = "E:\\KKPic\\114\\20131020\\BB0110520071213153612999WE1A00072.JPG";
+//		String fileName = url.substring(url.lastIndexOf("\\")+1, url.length());
+//		System.out.println(fileName);
+//		System.out.println(url.indexOf("KKPic"));
+//		System.out.println(url.length());
+//		System.out.println(url.substring(url.indexOf("KKPic")+5, url.length()));
+//		System.out.println(fileName.substring(24, 25));
+//		System.out.println(fileName.substring(26, 27));
+		
+//		String speed = "103";
+//		while(speed.length()<3) speed = "0"+speed;
+//		System.out.println(speed);
+		
+//		String startTime = "2013-09-01 23:59:59";
+//		String endTime = "2013-09-27 23:59:59";
+//		
+//		if(System.currentTimeMillis() >= DateHelper.parseDateString(startTime, "yyyy-MM-dd HH:mm:ss").getTime() && System.currentTimeMillis() <= DateHelper.parseDateString(endTime, "yyyy-MM-dd HH:mm:ss").getTime()) {
+//			System.out.println("true");
+//		} else {
+//			System.out.println("false");
+//		}
+		
+		
+//		String scanDir = "D:\\xzx\\一环路与花明路交叉路口\\机号003车道D12013年07月19日07时16分34秒R004D0E3T双层车牌C黄底黑字P湘A9C068驶向南至北违章闯红灯.JPG";		
+//		
+//		System.out.println(scanDir.substring((StringHelper.findCharacterPosition(scanDir,"\\",2)+1), StringHelper.findCharacterPosition(scanDir,"\\",3)));
+
+//
+//		String fileName = "X00R10001D2L02I000V000N01272T20130913111212826F0000A000Z00888219S31.JPG";
+//		System.out.println(fileName.substring(0, fileName.indexOf("F")) + fileName.substring(fileName.indexOf("S"), fileName.length()));
+//		System.out.println(fileName.substring(fileName.indexOf("R")+1, fileName.indexOf("D")));
+//		System.out.println(fileName.substring(fileName.indexOf("T")+1, fileName.indexOf("T")+9));
+//		System.out.println(fileName.substring(fileName.indexOf("T")+9, fileName.indexOf("T")+11));
+//		
+//		System.out.println(fileName.indexOf(".tmp"));
+		  
+//		String str = "机号018车道A12013年07月19日09时08分29秒RX85D1H2T标准车牌C蓝底白字P湘A06Y77驶向西至东违章超速时速85公里.JPG";
+//		String time = str.substring(9, 29);
+//		System.out.println(time);
+//		System.out.println(DateHelper.parseDateString(time, "yyyy年MM月dd日HH时mm分ss秒"));
+//		Date date = DateHelper.parseDateString(time, "yyyy年MM月dd日HH时mm分ss秒");
+//		System.out.println(DateHelper.dateToString(date, "yyyyMMddHHmmss"));
+		
+//		String speed = str.substring(str.indexOf("时速")+2, str.index.Of("公里"));
+//		System.out.println(speed);
+		
+//		System.out.println(SystemConstant.getInstance().getPlateColorByPlateTypeId("02"));
+		
+//		String dir = "X1022R440522010002D2L02I000V000N94564T2013072718330303&粤B7SY92&2S11.jpg";		
+//		System.out.println(dir.substring(dir.indexOf("X")+1, dir.indexOf("R")));
+
+//		
+//		System.out.println(dir.substring((getCharacterPosition(dir,"\\",2)+1), getCharacterPosition(dir,"\\",3)));
+		
+//		String str = "[record];machineip=192.168.1.3;date=2013-07-09;V1_Time=15:31:18;V2_Time=15:31:19;C_Time=15:31:19;addressNo=000;deiveNo=340103000000;directionNo=0;directionID=15;laneNo=0;laneID=21;licence=甘A1W919;platecolornum=4;peccancyType=0;speed=0.00;speedLimit=120.000000;V1_RedTime=0;V2_RedTime=0;C_RedTime=0;ImageWidth=0;ImageHeight=0;left=544;right=608;top=765;bottom=776;Avi=;v_count=0;V1=;V1Pass=;V2=;V2Pass=;V3=;V3Pass=;rnp_count=0;RNP=;RNPPass=;c_count=1;C1=340103000000_S0_甘A1W919_蓝_20130709153118_1_1_0_1_F0.jpg;C1Pass=;IniFile=340103000000_S0_甘A1W919_蓝_20130709153118_1_1_0_1_F.ini;AddInfo=1;CAPTURETIME=2013-07-09 15:31:18;TWODETECT=;complete=0;";   
+//		System.out.println(str.substring(str.indexOf("deiveNo=")+8, str.indexOf(";directionNo")));
+//		System.out.println(str.substring(str.indexOf("directionNo=")+12, str.indexOf(";directionID")));
+//		System.out.println(str.substring(str.indexOf("date=")+5, str.indexOf(";V1_Time")) + " " + str.substring(str.indexOf("V1_Time=")+8, str.indexOf(";V2_Time")));
+//		
+//		System.out.println(str.substring(str.indexOf("laneNo=")+7, str.indexOf(";laneID")));
+//		System.out.println(str.substring(str.indexOf("speed=")+6, str.indexOf(";speedLimit")).substring(0,str.substring(str.indexOf("speed=")+6, str.indexOf(";speedLimit")).indexOf(".")));
+//		System.out.println(str.substring(str.indexOf("speedLimit=")+11, str.indexOf(";V1_RedTime")).substring(0, str.substring(str.indexOf("speedLimit=")+11, str.indexOf(";V1_RedTime")).indexOf(".")));
+//		
+//		System.out.println(str.substring(str.indexOf("licence=")+8, str.indexOf(";platecolornum")));
+//		System.out.println(str.substring(str.indexOf("platecolornum=")+14, str.indexOf(";peccancyType")));
+//		
+//		System.out.println(str.substring(str.indexOf("c_count=")+8, str.indexOf(";C1")));
+//		System.out.println(str.substring(str.indexOf("C1=")+3, str.indexOf(";C1Pass")));
+		
+
+	}
+
+}

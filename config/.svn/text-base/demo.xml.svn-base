@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<message>
+	<head>
+		<code>DS1005</code>
+		<version>2.0.0.0</version>
+	</head>
+	<body>
+		<content>
+			<sbbh>801</sbbh>
+			<fxbh>0</fxbh>
+			<hphm><![CDATA[陕A00U64]]></hphm>
+			<hpys>2</hpys>
+			<jgsj>20130930100110</jgsj>
+			<cdbh>01</cdbh>
+			<clsd>054</clsd>
+			<clxs>000</clxs>
+			<txtp><![CDATA[http://127.0.0.1:81/veh/801/20130930/10/801-20130930100110691-1-54-陕A00U64-蓝.jpg]]></txtp>
+			<qjtp><![CDATA[]]></qjtp>
+		</content>
+	</body>
+</message>

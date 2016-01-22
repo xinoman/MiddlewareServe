@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>  	
+  	<filescan>  	  		
+  		<!--文件扫描器-->	
+  		<scanners>   			
+  			
+  			<!-- 新中新违法图片扫描标准版实现 -->		
+  			<scanner run="true" class="com.its.core.local.ningxiang.filescan.SynjonesViolationFileScannerImpl">
+				<!--
+					scan_interval_second	：每次扫描间隔时间（单位：秒）
+					scan_dir				：扫描目录，多个目录之间用逗号分隔
+					scan_file_num			：每次扫描最大文件数目
+				-->
+  				<common
+  					scan_interval_second	= "3"
+  					scan_dir				= "D:/xzx/"
+  					scan_file_num			= "100"
+  				/>
+  				
+  				<!-- 针对违法图片的参数 
+  					backup_dir					：文件扫描完成后的备份目录
+  					invalid_file_dir			：经校验无效的文件存放目录
+  					delete_file_dir				：删除过期文件存放目录
+  					backup_data_dir				：将违法数据输出到数据库失败后，备份数据的目录
+  					require_move_invalid_file	：是否移除经校验无效的文件，通常如果同一个目录有几个扫描器公用时，设置为false
+  					delay_delete_day			：删除延时多少天的文件  	
+  					max_no_modify_time_allow	：如果文件大小小于配置值，最长允许文件存在时间,单位：秒			
+  				-->
+  				<violation_param
+	  				backup_dir					= "D:/vio/target/"
+	  				invalid_file_dir			= "D:/vio/temp/invalid/"
+	  				delete_file_dir				= "D:/vio/temp/oldfile/"
+	  				backup_data_dir				= "D:/vio/temp/backupdata/"
+	  				require_move_invalid_file	= "true"
+	  				delay_delete_day			= "365"
+	  				max_no_modify_time_allow	= "60">
+	  				
+	  				<!-- 备份数据编码转换规则 -->
+	  				<backup_data_encoding 
+	  					from					= "GB2312" 
+	  					to						= "ISO-8859-1"
+	  				/> 	
+	  				
+	  				<!-- 图片参数
+	  					img_file_extension		：图片文件扩展名
+	  					delay_scan_second       ：以图片的最后修改时间来计算延迟多少秒钟才扫描，（如果间隔时间小于定义的秒数，则不扫描该文件，主要为防止扫描正在传输中的图片）	  					
+	  					min_image_file_size		：扫描时允许的最小图片文件大小（字节）
+	  					require_add_watermark	：是否添加标记（水印）
+	  					image_compress_quality	：图片压缩(取值从0.1~0.9，0.1表示最大限度压缩，-1表示不压缩）
+	  					image_compress_ge_size  ：图片大于等于多少字节时启用压缩（image_compress_quality>0且其值>0时才有效）
+	  					img_width				：图片目标宽度（如果为空或小于等于０，表示不改变）
+	  					img_height				：图片目标高度（如果为空或小于等于０，表示不改变）
+						add_md5_verify			: 是否添加MD5较验码
+	  				 -->
+	  				<image
+	  					img_file_extension		= ".JPG"
+	  					delay_scan_second       = "600"					
+	  					min_image_file_size		= "10240"
+	  					require_add_watermark	= "false"
+	  					image_compress_quality	= "-1"	  					
+	  					img_width				= ""
+	  					img_height				= ""
+						add_md5_verify			= "false"
+	  				/>
+	  				
+	  				<watermark	 	
+	  				    position	= "top"  				     					
+	  					font_size	= "28"
+	  					font_height	= "32"
+	  					font_color	= "YELLOW"
+	  					bg_color	= ""
+	  					left_margin	= "4"
+	  					top_margin	= "0"
+	  				/>
+	  				
+	  				<!-- 视频参数 
+	  					require_video			：视频文件是否必需
+	  					direct_delete_video		：是否直接删除视频文件，如果该参数设为true，则require_video必须设为false才有效，
+	  					video_file_extension	：视频文件扩展名
+	  					min_video_file_size		：最小视频文件大小（单位：字节）			
+	  				-->
+	  				<video
+	  					require_video			= "false"
+	  					direct_delete_video		= "false"
+	  					video_file_extension	= ".MPEG"
+	  					min_video_file_size		= "102400"
+	  				/>			
+	  				
+	  				<!-- 检查数据是否重复，如果重复，将删除重复图片 -->
+	  				<check_repeated
+	  					violate_record_temp = "select id from T_ITS_VIOLATE_RECORD_TEMP where image_path_1 like ?"
+	  					violate_record = "select id from T_ITS_VIOLATE_RECORD where image_path_1 like ?"
+	  				/>  				
+	                			
+  				</violation_param>
+  				
+  				<!-- 标准版配置信息  					
+  					file_path_prefix			 ：图片文件HTTP访问路径前缀
+  					merge					    : 是否合并图片(合并:true)
+  					orientation                 : 图片合并方式(垂直合并:true水平合并:false)
+  					insert_sql					 ：入库SQL语句
+  				 --> 
+  				 <standard_version
+	  				file_path_prefix			="http://192.168.1.199:81/vio/"
+	  				merge                       ="false"
+	  				orientation                 ="false"
+	  				insert_sql					="insert into t_its_violate_record_temp(id,violate_time,road_id,device_id,direction_code,line,speed,limit_speed,create_time,status,plate,plate_type_id,image_path_1) values (?,?,?,?,?,?,?,?,?,'N',?,?,?)"
+  				 />
+  				
+  			</scanner>  	
+  			
+  			<!-- 球机手动抓拍违违法图片扫描标准版实现 -->		
+  			<scanner run="false" class="com.its.core.local.ningxiang.filescan.BallAachineViolationFileScannerImpl">
+				<!--
+					scan_interval_second	：每次扫描间隔时间（单位：秒）
+					scan_dir				：扫描目录，多个目录之间用逗号分隔
+					scan_file_num			：每次扫描最大文件数目
+				-->
+  				<common
+  					scan_interval_second	= "3"
+  					scan_dir				= "D:/ftphome/"
+  					scan_file_num			= "100"
+  				/>
+  				
+  				<!-- 针对违法图片的参数 
+  					backup_dir					：文件扫描完成后的备份目录
+  					invalid_file_dir			：经校验无效的文件存放目录
+  					delete_file_dir				：删除过期文件存放目录
+  					backup_data_dir				：将违法数据输出到数据库失败后，备份数据的目录
+  					require_move_invalid_file	：是否移除经校验无效的文件，通常如果同一个目录有几个扫描器公用时，设置为false
+  					delay_delete_day			：删除延时多少天的文件  	
+  					max_no_modify_time_allow	：如果文件大小小于配置值，最长允许文件存在时间,单位：秒			
+  				-->
+  				<violation_param
+	  				backup_dir					= "D:/vio/target/"
+	  				invalid_file_dir			= "D:/vio/temp/invalid/"
+	  				delete_file_dir				= "D:/vio/temp/oldfile/"
+	  				backup_data_dir				= "D:/vio/temp/backupdata/"
+	  				require_move_invalid_file	= "true"
+	  				delay_delete_day			= "365"
+	  				max_no_modify_time_allow	= "60">
+	  				
+	  				<!-- 备份数据编码转换规则 -->
+	  				<backup_data_encoding 
+	  					from					= "GB2312" 
+	  					to						= "ISO-8859-1"
+	  				/> 	
+	  				
+	  				<!-- 图片参数
+	  					img_file_extension		：图片文件扩展名
+	  					delay_scan_second       ：以图片的最后修改时间来计算延迟多少秒钟才扫描，（如果间隔时间小于定义的秒数，则不扫描该文件，主要为防止扫描正在传输中的图片）	  					
+	  					min_image_file_size		：扫描时允许的最小图片文件大小（字节）
+	  					require_add_watermark	：是否添加标记（水印）
+	  					image_compress_quality	：图片压缩(取值从0.1~0.9，0.1表示最大限度压缩，-1表示不压缩）
+	  					image_compress_ge_size  ：图片大于等于多少字节时启用压缩（image_compress_quality>0且其值>0时才有效）
+	  					img_width				：图片目标宽度（如果为空或小于等于０，表示不改变）
+	  					img_height				：图片目标高度（如果为空或小于等于０，表示不改变）
+						add_md5_verify			: 是否添加MD5较验码
+	  				 -->
+	  				<image
+	  					img_file_extension		= "1.JPG"
+	  					delay_scan_second       = "600"					
+	  					min_image_file_size		= "10240"
+	  					require_add_watermark	= "true"
+	  					image_compress_quality	= "-1"	  					
+	  					img_width				= ""
+	  					img_height				= ""
+						add_md5_verify			= "false"
+	  				/>
+	  				
+	  				<watermark	 	
+	  				    position	= "top"  				     					
+	  					font_size	= "26"
+	  					font_height	= "26"
+	  					font_color	= "white"
+	  					bg_color	= "black"
+	  					bg_height   = "40"
+	  				    left_margin	= "5"
+	  					top_margin	= "5"
+	  				/>
+	  				
+	  				<!-- 视频参数 
+	  					require_video			：视频文件是否必需
+	  					direct_delete_video		：是否直接删除视频文件，如果该参数设为true，则require_video必须设为false才有效，
+	  					video_file_extension	：视频文件扩展名
+	  					min_video_file_size		：最小视频文件大小（单位：字节）			
+	  				-->
+	  				<video
+	  					require_video			= "false"
+	  					direct_delete_video		= "false"
+	  					video_file_extension	= ".MPEG"
+	  					min_video_file_size		= "102400"
+	  				/>			
+	  				
+	  				<!-- 检查数据是否重复，如果重复，将删除重复图片 -->
+	  				<check_repeated
+	  					violate_record_temp = "select id from T_ITS_VIOLATE_RECORD_TEMP where image_path_1 like ?"
+	  					violate_record = "select id from T_ITS_VIOLATE_RECORD where image_path_1 like ?"
+	  				/>
+	                			
+  				</violation_param>
+  				
+  				<!-- 标准版配置信息  					
+  					file_path_prefix			 ：图片文件HTTP访问路径前缀
+  					merge					    : 是否合并图片(合并:true)
+  					orientation                 : 图片合并方式(垂直合并:true水平合并:false)
+  					insert_sql					 ：入库SQL语句
+  				 --> 
+  				 <standard_version
+	  				file_path_prefix			="http://127.0.0.1:81/vio/target/"
+	  				merge                       ="false"
+	  				orientation                 ="false"
+	  				insert_sql					="insert into t_its_violate_record_temp(id,violate_time,road_id,device_id,direction_code,line,speed,limit_speed,create_time,status,plate,plate_type_id,image_path_1,wfxw_code) values (?,?,?,?,?,?,?,?,?,'N',?,?,?,?)"
+  				 />
+  				
+  			</scanner>			
+  										  						  		
+  		</scanners>
+  	</filescan>
+  </its>
+</param-config>

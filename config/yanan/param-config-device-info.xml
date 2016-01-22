@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<param-config>
+  <its>
+  	<common>
+	  	<!--设备信息
+	  		id	：设备编号
+			type：设备类型
+			ip	：设备IP
+			from：起始方向
+			to	：结束方向
+			road_name：路口名称
+	  	-->
+	  	<device_info>	  		
+	  		<device 
+	  			id				= "801" 
+	  			type			= "3" 
+	  			ip				= "192.168.9.9"
+	  			from			= "北" 
+	  			to				= "南"
+	  			road_name		= "201省道165KM+400M"
+	  		/>
+	  		   	
+	  		<device 
+	  			id				= "803" 
+	  			type			= "3" 
+	  			ip				= "192.168.9.12"
+	  			from			= "北" 
+	  			to				= "南"
+	  			road_name		= "201省道169KM+700M"
+	  		/>
+	  		
+	  		<device 
+	  			id				= "804" 
+	  			type			= "1" 
+	  			ip				= "192.168.9.11"
+	  			from			= "南" 
+	  			to				= "北"
+	  			road_name		= "201省道169KM+700M"
+	  		/>
+	  		   	
+	  		<device 
+	  			id				= "802" 
+	  			type			= "1" 
+	  			ip				= "192.168.9.10"
+	  			from			= "南" 
+	  			to				= "北"
+	  			road_name		= "201省道165KM+400M"	
+	  		/>
+	  	</device_info>
+  	</common>
+  </its>
+</param-config>
